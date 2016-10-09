@@ -32,6 +32,9 @@ def run():
   channel = grpc.insecure_channel('localhost:50050')
   stub = sensors_pb2.FrontEndStub(channel)
 
+  dbchannel = grpc.insecure_channel('localhost:50049')
+  dbstub = sensors_pb2.DaoStub(dbchannel)
+
   lux = getLux(stub)
   print('lux: ', lux)
 
@@ -48,10 +51,22 @@ def run():
   buttonPressed = stub.GetButtonPressed(req).pressed
   print('buttonPressed', buttonPressed)
   req = sensors_pb2.SetLedStripRequest(
-    length= 30,
+    length=30,
     brightness=100 if buttonPressed else 0,
     speed=5)
   response = stub.SetLedStrip(req)
+
+  req = sensors_pb2.SelectRequest(
+    table='lux',
+    limit=10,
+    cols=[
+    # TODO: client needs to know too much about the Database
+      sensors_pb2.RequestCol(name='lux', coltype=sensors_pb2.RequestCol.INT),
+      sensors_pb2.RequestCol(name='date', coltype=sensors_pb2.RequestCol.STRING)
+      ],
+    )
+  columns = dbstub.Select(req).columns
+  print('result %s' % columns)
 
 
 if __name__ == '__main__':

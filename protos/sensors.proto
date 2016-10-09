@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+
 // The greeting service definition.
 service FrontEnd {
   // Sends a greeting
@@ -23,6 +24,39 @@ service WioLink {
   rpc GetSound (GetSoundRequest) returns (GetSoundReply) {}
   rpc SetLedStrip (SetLedStripRequest) returns (SetLedStripReply) {}
   rpc GetButtonPressed (GetButtonPressedRequest) returns (GetButtonPressedReply) {}
+}
+
+service Dao {
+  rpc Select(SelectRequest) returns (SelectReply) {}
+}
+
+message SelectRequest {
+  string table = 1;
+  int32 limit = 2;
+  repeated RequestCol cols = 3;
+}
+
+message RequestCol {
+  string name = 1;
+  enum ColType {
+    INT = 0;
+    DOUBLE = 1;
+    BOOL = 2;
+    STRING = 3;
+  }
+  ColType coltype = 2;
+}
+
+message SelectReply {
+  repeated DataColumn columns = 1;
+}
+
+message DataColumn {
+  string name = 1;
+  repeated int32 intValues = 2;
+  repeated double doubleValues = 3;
+  repeated bool boolValues = 4;
+  repeated string stringValues = 5;
 }
 
 // The request message containing the user's name.

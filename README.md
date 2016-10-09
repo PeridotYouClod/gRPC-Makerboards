@@ -4,6 +4,7 @@
 * WioServer.py - gRPC Server connecting to a [Wio Link](http://wiki.seeed.cc/Wio_Link/) via REST.
 * ArduinoServer.py - gRPC Server connecting to an [Arduino](https://www.arduino.cc/en/Guide/Introduction) via COM port.
 * FrontEndServer.py - gRPC Server communicates to backend servers to give a single connection point to the client.
+* DaoServer.py - gRPC Server for communicating with the database.
 
 ### Clients
 * Client.py - Simple gRPC Client example.
@@ -75,6 +76,15 @@ Every time a .proto file is changed run this script to create new implementation
       --proto_path=./protos \
       --python_out=./proto_out \
       --grpc_python_out=./proto_out \
+
+## How Do I Run Everything?
+The basic procedure is launch all the servers then run the Client
+
+    python WioServer.py &
+    python ArduinoServer.py &
+    python DaoServer.py &
+    python FrontEndServer.py &
+    python Client.py
 
 ## WioLink Help
 

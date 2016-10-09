@@ -15,7 +15,9 @@ class Mongo(object):
       print('Reusing Connection!')
     return self.db
 
-  def Find(self, col, limit=None):
-    if limit:
-      return self.db[col].find().sort('date', -1).limit(limit)
-    return self.db[col].find().sort('date', -1)
+  def Find(self, table, limit=0, columns=None):
+      cols = columns or []
+      projection = {'_id': 0} # _id defaults to 1 so it is supressed.
+      for col in cols:
+          projection[col] = 1
+      return self.db[table].find({},projection).sort('date', -1).limit(limit)

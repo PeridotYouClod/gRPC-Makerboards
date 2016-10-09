@@ -25,9 +25,6 @@ class WioLink(sensors_pb2.WioLinkServicer):
     self.ledStrip = WioSensorReader(wioHavok, 'ledStrip')
     self.button = WioSensorReader(wioHavok, 'button')
 
-    arduino = protoConfig.arduinos[0]
-    self.ser = serial.Serial(arduino.comPort, arduino.baudRate)
-
   def GetLux(self, request, context):
     lux = self.lux.GetCurrentValue()
     print('Returning Brigtness: %s' % lux)
