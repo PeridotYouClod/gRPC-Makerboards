@@ -6,13 +6,11 @@ import re
 import sys
 
 from Sensor import WioSensorReader
-import Mongo
 import ProtoConfig
 import proto_out.sensors_pb2 as sensors_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 PORT = 50051
-
 
 class WioLink(sensors_pb2.WioLinkServicer):
   def __init__(self):
@@ -20,6 +18,7 @@ class WioLink(sensors_pb2.WioLinkServicer):
     protoConfig = ProtoConfig.getConfig()
 
     wioHavok = protoConfig.wioLinks['havok']
+    wioKairi = protoConfig.wioLinks['kairi']
     self.temperature_c = WioSensorReader(wioHavok, 'temperature_c')
     self.lux = WioSensorReader(wioHavok, 'lux')
     self.sound = WioSensorReader(wioHavok, 'loudness')
@@ -66,20 +65,21 @@ class WioLink(sensors_pb2.WioLinkServicer):
     self.ledStrip.setUrl(url)
     return sensors_pb2.SetLedStripReply()
 
- def GetButtonPressed(self, req, context):
-   pressedVal = self.button.GetCurrentValue()
-   pressed = pressedVal['pressed']
-   print('Returning Pressed: %s' % pressedVal)
-   val = True if pressed == 1 else False
-   print('Returning Pressed: %s' % val)
-   return sensors_pb2.GetButtonPressedReply(pressed=val)
+  def GetButtonPressed(self, req, context):
+    pressedVal = self.button.GetCurrentValue()
+    pressed = pressedVal['pressed']
+    print('Returning Pressed: %s' % pressedVal)
+    val = True if pressed == 1 else False
+    print('Returning Pressed: %s' % val)
+    return sensors_pb2.GetButtonPressedReply(pressed=val)
 
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  sensors_pb2.add_SensorsServicer_to_server(Sensors(), server)
+  sensors_pb2.add_WioLinkServicer_to_server(WioLink(), server)
   server.add_insecure_port('[::]:%s' % PORT)
-  print('Starting Server on Port %s' % PORT)
+  print('Starting Server...')
   server.start()
+  print('Server Started on Port %s' % PORT)
 
   try:
     while True:

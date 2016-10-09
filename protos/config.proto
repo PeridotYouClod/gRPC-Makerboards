@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-
 message ServerConfig {
   // The collection of External WioLinks
   map<string, WioLinkConfig> wioLinks = 1;
@@ -8,10 +7,9 @@ message ServerConfig {
 }
 
 message WioLinkConfig {
-	string name = 1;
-	string rootUrl = 2;
-	string apiKey = 3;
-	repeated GroveSensor sensors = 4;
+	string rootUrl = 1;
+	string apiKey = 2;
+	map<string,GroveSensor> sensors = 3;
 }
 
 message GroveSensor {
