@@ -1,13 +1,26 @@
 syntax = "proto3";
 
 // The greeting service definition.
-service Sensors {
+service FrontEnd {
   // Sends a greeting
   rpc GetLux (GetLuxRequest) returns (GetLuxReply) {}
   rpc GetTemperature (GetTemperatureRequest) returns (GetTemperatureReply) {}
-  rpc GetSound (GetLoudnessRequest) returns (GetLoudnessReply) {}
+  rpc GetSound (GetSoundRequest) returns (GetSoundReply) {}
   rpc GetIrButtonPressed (GetIrButtonPressedRequest) returns (GetIrButtonPressedReply) {}
   rpc GetSonar (GetSonarRequest) returns (GetSonarReply) {}
+  rpc SetLedStrip (SetLedStripRequest) returns (SetLedStripReply) {}
+  rpc GetButtonPressed (GetButtonPressedRequest) returns (GetButtonPressedReply) {}
+}
+
+service Arduino {
+  rpc GetIrButtonPressed (GetIrButtonPressedRequest) returns (GetIrButtonPressedReply) {}
+  rpc GetSonar (GetSonarRequest) returns (GetSonarReply) {}
+}
+
+service WioLink {
+  rpc GetLux (GetLuxRequest) returns (GetLuxReply) {}
+  rpc GetTemperature (GetTemperatureRequest) returns (GetTemperatureReply) {}
+  rpc GetSound (GetSoundRequest) returns (GetSoundReply) {}
   rpc SetLedStrip (SetLedStripRequest) returns (SetLedStripReply) {}
   rpc GetButtonPressed (GetButtonPressedRequest) returns (GetButtonPressedReply) {}
 }
@@ -30,10 +43,10 @@ message GetTemperatureReply {
 }
 
 // The request message containing the user's name.
-message GetLoudnessRequest {}
+message GetSoundRequest {}
 
 // The response message containing the greetings
-message GetLoudnessReply {
+message GetSoundReply {
   int32 loudness = 1;
 }
 
@@ -52,7 +65,7 @@ message GetSonarReply {
 message GetButtonPressedRequest{}
 
 message GetButtonPressedReply {
-  bool pressed = 1;
+	bool pressed = 1;
 }
 
 message SetLedStripRequest {

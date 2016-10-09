@@ -3,11 +3,11 @@ syntax = "proto3";
 
 message ServerConfig {
   // The collection of External WioLinks
-  map<string, WioLink> wioLinks = 1;
-  repeated Arduino arduinos = 2;
+  map<string, WioLinkConfig> wioLinks = 1;
+  repeated ArduinoConfig arduinos = 2;
 }
 
-message WioLink {
+message WioLinkConfig {
 	string name = 1;
 	string rootUrl = 2;
 	string apiKey = 3;
@@ -18,7 +18,7 @@ message GroveSensor {
 	string apiMethod = 1;
 }
 
-message Arduino {
+message ArduinoConfig {
 	string comPort = 1;
 	int32 baudRate = 2;
 }
