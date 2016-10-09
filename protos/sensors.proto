@@ -23,8 +23,8 @@ message GetTemperatureRequest {}
 
 // The response message containing the greetings
 message GetTemperatureReply {
-  float celsius_degree = 1;
-  float fahrenheit_degree = 2;
+  float temperature_c = 1;
+  float temperature_f = 2;
 }
 
 // The request message containing the user's name.
@@ -46,4 +46,3 @@ message GetSonarRequest{}
 message GetSonarReply {
   int32 distance = 1;
 }
-

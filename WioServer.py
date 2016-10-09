@@ -10,22 +10,22 @@ import sys
 
 import proto_out.sensors_pb2 as sensors_pb2
 
-_ONE_DAY_IN_SECONDS = 1 #60 * 60 * 24
+_ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 
 class Sensors(sensors_pb2.SensorsServicer):
   def __init__(self):
     super().__init__()
     protoConfig = ProtoConfig.getConfig()
-    
+
     wioKairi = protoConfig.wioLinks[0]
     self.temperature_c = WioSensorReader(wioKairi, wioKairi.sensors[0])
     self.temperature_f = WioSensorReader(wioKairi, wioKairi.sensors[1])
-    
+
     wioHavok = protoConfig.wioLinks[1]
     self.lux = WioSensorReader(wioHavok, wioHavok.sensors[0])
     self.sound = WioSensorReader(wioHavok, wioHavok.sensors[1])
-    
+
     arduino = protoConfig.arduinos[0]
     self.ser = serial.Serial(arduino.comPort, arduino.baudRate)
 
@@ -37,14 +37,13 @@ class Sensors(sensors_pb2.SensorsServicer):
   def GetTemperature(self, request, context):
     temperature_c = self.temperature_c.GetCurrentValue()
     temperature_f = self.temperature_f.GetCurrentValue()
-    print("Returning Temperature: %s*c / %s*f" % (temperature_c, temperature_f))
-    if temperature_f is None or temperature_c is None:
-      return sensors_pb2.GetTemperatureReply(celsius_degree=0, fahrenheit_degree=0)
+    print("Returning Temperature: %s*c / %s*f" %
+      (temperature_c['celsius_degree'],
+       temperature_f['fahrenheit_degree']))
     return sensors_pb2.GetTemperatureReply(
-      celsius_degree=temperature_c['celsius_degree'],
-      fahrenheit_degree=temperature_f['fahrenheit_degree'])
+      temperature_c=temperature_c['celsius_degree'],
+      temperature_f=temperature_f['fahrenheit_degree'])
 
-  
   def GetSound(self, request, context):
     sound = self.sound.GetCurrentValue()
     print("Returning Loudness: %s" % sound)
@@ -70,7 +69,7 @@ def serve():
   server.add_insecure_port('[::]:50051')
   print('Starting Server on Port 50051')
   server.start()
-  
+
   try:
     while True:
       time.sleep(_ONE_DAY_IN_SECONDS)
