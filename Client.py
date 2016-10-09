@@ -60,9 +60,8 @@ def run():
     table='lux',
     limit=10,
     cols=[
-    # TODO: client needs to know too much about the Database
-      sensors_pb2.RequestCol(name='lux', coltype=sensors_pb2.RequestCol.INT),
-      sensors_pb2.RequestCol(name='date', coltype=sensors_pb2.RequestCol.STRING)
+      sensors_pb2.RequestCol(name='lux'),
+      sensors_pb2.RequestCol(name='date')
       ],
     )
   columns = dbstub.Select(req).columns

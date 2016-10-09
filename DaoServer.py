@@ -12,11 +12,9 @@ _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 PORT = 50049
 
 class Dao(sensors_pb2.DaoServicer):
-  def __init__(self):
+  def __init__(self, sensor_db):
     super().__init__()
-    self.sensor_db = Mongo()
-    # initalized Db
-    self.sensor_db.GetClient()
+    self.sensor_db = sensor_db
 
   def Select(self, request, context):
     table = request.table
@@ -25,31 +23,33 @@ class Dao(sensors_pb2.DaoServicer):
     print('Got request {\n%s}\n' % (request))
     colNames = [col.name for col in cols]
     findResult = self.sensor_db.Find(table=table, columns=colNames, limit=limit)
-    allColValues = {} # Col name to list of vals
-    for col in cols:
-        allColValues[col.name] = {'colType': col.coltype, 'values': []}
+    allColValues = {col.name: [] for col in cols} # Col name to list of vals
     for doc in findResult:
         for col in cols:
             # print('%s added to %s' % (doc[col.name], col.name))
-            allColValues[col.name]['values'].append(doc[col.name])
-    dataColumns = []
-    for (colName, colValues) in allColValues.items():
-        colType = colValues['colType']
-        vals = colValues['values']
-        # print("colName: %s, coltype: %s, colValues: %s" %
-        #   (colName, colType, vals))
-        if colType == sensors_pb2.RequestCol.INT:
-            dataColumn = sensors_pb2.DataColumn(name=colName, intValues=vals)
-        elif colType == sensors_pb2.RequestCol.STRING:
-            dataColumn = sensors_pb2.DataColumn(name=colName, stringValues=vals)
-        else:
-            print("ERROR UNKNOWN TYPE")
-        dataColumns.append(dataColumn)
+            allColValues[col.name].append(doc[col.name])
+    dataColumns = [self._NewDataColumn(colName, vals) for (colName, vals)
+                   in allColValues.items()]
     return sensors_pb2.SelectReply(columns=dataColumns)
 
+  def _NewDataColumn(self, columnName, values):
+    datacolumn = sensors_pb2.DataColumn(name=columnName)
+    if not values:
+        print("Warning: No values found.")
+    elif type(values[0]) is int:
+        datacolumn.intValues.extend(values)
+    elif type(values[0]) is str:
+        datacolumn.stringValues.extend(values)
+    else:
+        print("ERROR: Unknown Type!")
+    return datacolumn
+
+
 def serve():
+  sensor_db = Mongo()
+  sensor_db.GetClient() # initalize the Db
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  sensors_pb2.add_DaoServicer_to_server(Dao(), server)
+  sensors_pb2.add_DaoServicer_to_server(Dao(sensor_db), server)
   server.add_insecure_port('[::]:%s' % PORT)
   server.start()
   print('Server Started on Port %s ' % PORT)

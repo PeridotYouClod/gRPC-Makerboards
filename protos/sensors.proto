@@ -38,13 +38,6 @@ message SelectRequest {
 
 message RequestCol {
   string name = 1;
-  enum ColType {
-    INT = 0;
-    DOUBLE = 1;
-    BOOL = 2;
-    STRING = 3;
-  }
-  ColType coltype = 2;
 }
 
 message SelectReply {
