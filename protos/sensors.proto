@@ -8,6 +8,8 @@ service Sensors {
   rpc GetSound (GetLoudnessRequest) returns (GetLoudnessReply) {}
   rpc GetIrButtonPressed (GetIrButtonPressedRequest) returns (GetIrButtonPressedReply) {}
   rpc GetSonar (GetSonarRequest) returns (GetSonarReply) {}
+  rpc SetLedStrip (SetLedStripRequest) returns (SetLedStripReply) {}
+  rpc GetButtonPressed (GetButtonPressedRequest) returns (GetButtonPressedReply) {}
 }
 
 // The request message containing the user's name.
@@ -46,3 +48,17 @@ message GetSonarRequest{}
 message GetSonarReply {
   int32 distance = 1;
 }
+
+message GetButtonPressedRequest{}
+
+message GetButtonPressedReply {
+  bool pressed = 1;
+}
+
+message SetLedStripRequest {
+  int32 length  = 1; // the length of the flow, the flow will always begin with index 0.
+  int32 brightness = 2; // 0~100
+  int32 speed = 3; // 1~10, 10 is the fastest.
+}
+
+message SetLedStripReply {}

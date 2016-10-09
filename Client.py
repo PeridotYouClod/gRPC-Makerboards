@@ -44,6 +44,15 @@ def run():
   loudness = getSound(stub)
   print('loudness: ', loudness)
 
+  req = sensors_pb2.GetButtonPressedRequest()
+  buttonPressed = stub.GetButtonPressed(req).pressed
+  print("buttonPressed", buttonPressed)
+  req = sensors_pb2.SetLedStripRequest(
+    length= 30,
+    brightness=100 if buttonPressed else 0,
+    speed=5)
+  response = stub.SetLedStrip(req)
+
+
 if __name__ == '__main__':
   run()
-

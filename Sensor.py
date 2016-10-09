@@ -15,6 +15,7 @@ class WioSensorReader(object):
 
   def GetCurrentValue(self):
       try:
+        print(self.getUrl())
         request = urllib.request.urlopen(self.getUrl())
         return_val = request.read().decode("utf-8")
         request.close()
@@ -22,8 +23,12 @@ class WioSensorReader(object):
       except:
         return None
 
-  def postRequest(self, obj):
-      pass
+  def setUrl(self, urlArgsStr):
+      url = (self.wioConfig.rootUrl + self.groveConfig.apiMethod
+        + urlArgsStr + self.wioConfig.apiKey)
+      print("setUrl: ", url)
+      params = urllib.parse.urlencode({}).encode('utf-8')
+      urllib.request.urlopen(url, data=params)
 
   def printRequest(self):
       print(self.GetCurrentValue())

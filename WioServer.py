@@ -18,13 +18,12 @@ class Sensors(sensors_pb2.SensorsServicer):
     super().__init__()
     protoConfig = ProtoConfig.getConfig()
 
-    wioKairi = protoConfig.wioLinks[0]
-    self.temperature_c = WioSensorReader(wioKairi, wioKairi.sensors[0])
-    self.temperature_f = WioSensorReader(wioKairi, wioKairi.sensors[1])
-
-    wioHavok = protoConfig.wioLinks[1]
-    self.lux = WioSensorReader(wioHavok, wioHavok.sensors[0])
-    self.sound = WioSensorReader(wioHavok, wioHavok.sensors[1])
+    wioHavok = protoConfig.wioLinks['havok']
+    self.temperature_c = WioSensorReader(wioHavok, 'temperature_c')
+    self.lux = WioSensorReader(wioHavok, 'lux')
+    self.sound = WioSensorReader(wioHavok, 'loudness')
+    self.ledStrip = WioSensorReader(wioHavok, 'ledStrip')
+    self.button = WioSensorReader(wioHavok, 'button')
 
     arduino = protoConfig.arduinos[0]
     self.ser = serial.Serial(arduino.comPort, arduino.baudRate)
@@ -35,14 +34,13 @@ class Sensors(sensors_pb2.SensorsServicer):
     return sensors_pb2.GetLuxReply(lux=lux['lux'])
 
   def GetTemperature(self, request, context):
-    temperature_c = self.temperature_c.GetCurrentValue()
-    temperature_f = self.temperature_f.GetCurrentValue()
+    temperature_c = self.temperature_c.['temperature_c']
+    temperature_f = float(temperature_c) * (9./5.) + 32.
     print("Returning Temperature: %s*c / %s*f" %
-      (temperature_c['celsius_degree'],
-       temperature_f['fahrenheit_degree']))
+      (temperature_c, temperature_f))
     return sensors_pb2.GetTemperatureReply(
-      temperature_c=temperature_c['celsius_degree'],
-      temperature_f=temperature_f['fahrenheit_degree'])
+      temperature_c=temperature_c,
+      temperature_f=temperature_f)
 
   def GetSound(self, request, context):
     sound = self.sound.GetCurrentValue()
@@ -62,6 +60,18 @@ class Sensors(sensors_pb2.SensorsServicer):
     print("Returning Sonar: %s" % clean_value)
     return sensors_pb2.GetSonarReply(distance=clean_value)
 
+  def SetLedStrip(self, req, context):
+    url = "/%s/%s/%s" % (req.length, req.brightness, req.speed)
+    self.ledStrip.setUrl(url)
+    return sensors_pb2.SetLedStripReply()
+
+ def GetButtonPressed(self, req, context):
+   pressedVal = self.button.GetCurrentValue()
+   pressed = pressedVal['pressed']
+   print("Returning Pressed: %s" % pressedVal)
+   val = True if pressed == 1 else False
+   print("Returning Pressed: %s" % val)
+   return sensors_pb2.GetButtonPressedReply(pressed=val)
 
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
