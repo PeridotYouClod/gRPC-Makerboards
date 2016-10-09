@@ -29,8 +29,8 @@ def getSonar(stub):
   return response.distance
 
 def run():
-  channel = grpc.insecure_channel('localhost:50051')
-  stub = sensors_pb2.SensorsStub(channel)
+  channel = grpc.insecure_channel('localhost:50050')
+  stub = sensors_pb2.FrontEndStub(channel)
 
   lux = getLux(stub)
   print('lux: ', lux)
@@ -46,7 +46,7 @@ def run():
 
   req = sensors_pb2.GetButtonPressedRequest()
   buttonPressed = stub.GetButtonPressed(req).pressed
-  print("buttonPressed", buttonPressed)
+  print('buttonPressed', buttonPressed)
   req = sensors_pb2.SetLedStripRequest(
     length= 30,
     brightness=100 if buttonPressed else 0,
