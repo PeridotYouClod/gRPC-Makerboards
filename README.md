@@ -33,7 +33,7 @@
     sudo pip3 install grpcio grpcio-tools
 
     # Get required python libs
-    pip3 install pyserial pymongo urllib3 plotly
+    pip3 install pyserial pymongo urllib3 plotly futures
 
 ### Mac
     brew install git
@@ -51,7 +51,7 @@
     pip3 install grpcio grpcio-tools
 
     # Get required python libs
-    pip3 install pyserial pymongo urllib3 plotly
+    pip3 install pyserial pymongo urllib3 plotly futures
 
 ## Set up your ProtoConfig.py file
 Copy the ProtoConfigExample.py to ProtoConfig.py
