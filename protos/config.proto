@@ -3,7 +3,7 @@ syntax = "proto3";
 
 message ServerConfig {
   // The collection of External WioLinks
-  repeated WioLink wioLinks = 1;
+  map<string, WioLink> wioLinks = 1;
   repeated Arduino arduinos = 2;
 }
 
@@ -22,4 +22,3 @@ message Arduino {
 	string comPort = 1;
 	int32 baudRate = 2;
 }
-
