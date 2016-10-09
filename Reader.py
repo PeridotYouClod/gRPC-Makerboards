@@ -6,24 +6,23 @@ from Database import Mongo
 
 import ProtoConfig
 
-sleep_time_sec = 10 # * 60 # 1 min
+sleep_time_sec = 10
 
 def run():
   sensor_db = Mongo.GetClient()
-
   wioConfig = ProtoConfig.getConfig()
-  wioKairi = wioConfig.wioLinks[0]
-  wioHavok = wioConfig.wioLinks[1]
-  arduinoConfig = wioConfig.arduinos[0]
 
-  air_quality = SensorReader(wioKairi, 'GroveAirqualityA0/quality')
-  lux = WioSensorReader( wioHavok, 'GroveDigitalLightI2C0/lux')
-  sound = WioSensorReader( wioHavok, 'GroveLoudnessA0/loudness')
-  arduino = ArduinoSensorReader(arduinoConfig)
-  clients = [SensorDbWriter(air_quality, sensor_db.air_quality),
-             SensorDbWriter(lux, sensor_db.lux),
-             SensorDbWriter(sound, sensor_db.loudness),
-            ]
+  wioHavok = protoConfig.wioLinks['havok']
+  sensor_lux = WioSensorReader(wioHavok, 'lux')]
+  sensor_loudness = WioSensorReader(wioHavok, 'loudness')
+  sensor_temperature_c = WioSensorReader(wioHavok, 'temperature_c')
+
+  clients = [
+    SensorDbWriter(sensor_temperature_c, sensor_db.temperature_c),
+     SensorDbWriter(air_quality, sensor_db.air_quality),
+     SensorDbWriter(sensor_lux, sensor_db.lux),
+     SensorDbWriter(sensor_loudness, sensor_db.loudness),
+  ]
 
   while True:
     start = time()
@@ -36,8 +35,7 @@ def run():
     sleep_time_remain_sec = max(sleep_time_sec - delta, 0)
     print('Added data from %s sensors going to sleep for %ds (%dm)\n' % (
       len(clients), sleep_time_remain_sec, sleep_time_remain_sec/60))
-    sleep(sleep_time_remain_sec) 
+    sleep(sleep_time_remain_sec)
 
 if __name__ == '__main__':
   run()
-
