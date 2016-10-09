@@ -10,7 +10,8 @@ class WioSensorReader(object):
     return self.groveConfig
 
   def getUrl(self):
-      return self.wioConfig.rootUrl + self.groveConfig.apiMethod + self.wioConfig.apiKey
+      return (self.wioConfig.rootUrl + self.groveConfig.apiMethod
+        + self.wioConfig.apiKey)
 
   def GetCurrentValue(self):
       try:
@@ -57,4 +58,3 @@ class SensorDbWriter(object):
     else:
       print("Faied to get value for %s" % self.sensor.getName())
     return current_val
-
