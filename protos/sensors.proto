@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+// The greeting service definition.
+service Sensors {
+  // Sends a greeting
+  rpc GetLux (GetLuxRequest) returns (GetLuxReply) {}
+  rpc GetTemperature (GetTemperatureRequest) returns (GetTemperatureReply) {}
+  rpc GetSound (GetLoudnessRequest) returns (GetLoudnessReply) {}
+  rpc GetIrButtonPressed (GetIrButtonPressedRequest) returns (GetIrButtonPressedReply) {}
+  rpc GetSonar (GetSonarRequest) returns (GetSonarReply) {}
+}
+
+// The request message containing the user's name.
+message GetLuxRequest {}
+
+// The response message containing the greetings
+message GetLuxReply {
+  int32 lux = 1;
+}
+
+// The request message containing the user's name.
+message GetTemperatureRequest {}
+
+// The response message containing the greetings
+message GetTemperatureReply {
+  float celsius_degree = 1;
+  float fahrenheit_degree = 2;
+}
+
+// The request message containing the user's name.
+message GetLoudnessRequest {}
+
+// The response message containing the greetings
+message GetLoudnessReply {
+  int32 loudness = 1;
+}
+
+message GetIrButtonPressedRequest{}
+
+message GetIrButtonPressedReply {
+	int32 button = 1;
+}
+
+message GetSonarRequest{}
+
+message GetSonarReply {
+  int32 distance = 1;
+}
+
