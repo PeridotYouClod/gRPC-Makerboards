@@ -34,7 +34,7 @@ class WioLink(sensors_pb2.WioLinkServicer):
     return sensors_pb2.GetLuxReply(lux=lux['lux'])
 
   def GetTemperature(self, request, context):
-    temperature_c = self.temperature_c.['temperature_c']
+    temperature_c = self.temperature_c.GetCurrentValue()['celsius_degree']
     temperature_f = float(temperature_c) * (9./5.) + 32.
     print('Returning Temperature: %s*c / %s*f' %
       (temperature_c, temperature_f))

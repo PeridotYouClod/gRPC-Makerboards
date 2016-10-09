@@ -3,9 +3,9 @@ import json
 import serial
 
 class WioSensorReader(object):
-  def __init__(self, wioConfig, groveConfig):
+  def __init__(self, wioConfig, groveName):
     self.wioConfig = wioConfig
-    self.groveConfig = groveConfig
+    self.groveConfig = wioConfig.sensors[groveName]
 
   def getName(self):
     return self.groveConfig
@@ -26,7 +26,7 @@ class WioSensorReader(object):
 
   def setUrl(self, urlArgsStr):
       url = (self.wioConfig.rootUrl + self.groveConfig.apiMethod
-        + urlArgsStr + self.wioConfig.apiKey)
+             + urlArgsStr + self.wioConfig.apiKey)
       print('setUrl: ', url)
       params = urllib.parse.urlencode({}).encode('utf-8')
       urllib.request.urlopen(url, data=params)
@@ -44,10 +44,10 @@ class ArduinoSensorReader(object):
     return 'Arduino on %s' % arduinoConfig.comPort
 
   def GetCurrentValue(self):
-    serial_value = self.ser.readline()
+    serial_value = self.serial.readline()
+    print('Returning Arduino Value: %s' % serial_value)
     clean_value = int(serial_value)
-    self.ser.reset_input_buffer()
-    print('Returning Arduino Value: %s' % clean_value)
+    self.serial.reset_input_buffer()
     return clean_value
 
 class SensorDbWriter(object):
