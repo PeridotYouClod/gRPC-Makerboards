@@ -26,18 +26,14 @@
     sudo chown $USER -R /data/
 
     # Install python3 pip if it is missing
-    sudo apt-get install python3-pip #Skip this if you are on Mac
+    sudo apt-get install python3-pip
     pip3 install --upgrade pip
 
     # Grab gRPC for protobufs and servers
-    sudo pip3 install grpcio
-    sudo pip3 install grpcio-tools
+    sudo pip3 install grpcio grpcio-tools
 
     # Get required python libs
-    pip3 install pyserial
-    pip3 install pymongo
-    pip3 install urllib3
-    pip3 install plotly
+    pip3 install pyserial pymongo urllib3 plotly
 
 ### Mac
     brew install git
@@ -52,14 +48,10 @@
     pip3 install --upgrade pip
 
     # Grab gRPC for protobufs and servers
-    pip3 install grpcio
-    pip3 install grpcio-tools
+    pip3 install grpcio grpcio-tools
 
     # Get required python libs
-    pip3 install pyserial
-    pip3 install pymongo
-    pip3 install urllib3
-    pip3 install plotly
+    pip3 install pyserial pymongo urllib3 plotly
 
 ## Set up your ProtoConfig.py file
 Copy the ProtoConfigExample.py to ProtoConfig.py
