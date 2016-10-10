@@ -30,6 +30,19 @@ service Dao {
   rpc Select(SelectRequest) returns (SelectReply) {}
 }
 
+service Push {
+  rpc SubscribeButtonPressed(SubscribeButtonPressedRequest) returns (stream GetButtonPressedReply) {}
+}
+
+message SubscriptionUpdate {
+  enum UpdateStatus {
+    NONE = 0;
+    SUBSCRIBE = 1;
+    UNSUBSCRIBE = 2;
+  }
+  UpdateStatus status = 1;
+}
+
 message SelectRequest {
   string table = 1;
   int32 limit = 2;
@@ -91,8 +104,17 @@ message GetSonarReply {
 
 message GetButtonPressedRequest{}
 
+message SubscribeButtonPressedRequest{
+  SubscriptionUpdate update = 1;
+  string username = 2;
+  int64 index = 3;
+}
+
 message GetButtonPressedReply {
 	bool pressed = 1;
+  // TODO: This may not belong here, it is for the streaming server.
+  // This value is the start index for a streaming request.
+  int64 start_index = 2;
 }
 
 message SetLedStripRequest {

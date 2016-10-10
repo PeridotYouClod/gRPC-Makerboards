@@ -5,9 +5,11 @@
 * ArduinoServer.py - gRPC Server connecting to an [Arduino](https://www.arduino.cc/en/Guide/Introduction) via COM port.
 * FrontEndServer.py - gRPC Server communicates to backend servers to give a single connection point to the client.
 * DaoServer.py - gRPC Server for communicating with the database.
+* PushServer.py - gRPC Server for receiving push events from devices.
 
 ### Clients
 * Client.py - Simple gRPC Client example.
+* Client_Streaming.py - Streaming gRPC Client example.
 
 ### Automatic Database Storage
 * Reader.py - Reads the values from the Sensor and stores them to a Mongo Database.
@@ -33,7 +35,7 @@
     sudo pip3 install grpcio grpcio-tools
 
     # Get required python libs
-    pip3 install pyserial pymongo urllib3 plotly futures
+    pip3 install pyserial pymongo urllib3 plotly futures websocket
 
 ### Mac
     brew install git
@@ -51,7 +53,7 @@
     pip3 install grpcio grpcio-tools
 
     # Get required python libs
-    pip3 install pyserial pymongo urllib3 plotly futures
+    pip3 install pyserial pymongo urllib3 plotly futures websocket
 
 ## Set up your ProtoConfig.py file
 Copy the ProtoConfigExample.py to ProtoConfig.py
@@ -69,24 +71,24 @@ Linux:
       ./protos/sensors.proto ./protos/config.proto \
       --proto_path=./protos \
       --python_out=./proto_out \
-      --grpc_python_out=./proto_out \
+      --grpc_python_out=./proto_out
 
 Mac:
 
     python -m grpc.tools.protoc ./protos/sensors.proto ./protos/config.proto --proto_path=./protos --python_out=./proto_out --grpc_python_out=./proto_out
 
 
-
 ## How Do I Run Everything?
 The basic procedure is launch all the servers then run the Client
 
-### Production 
+### Production
 If you have a working version and don't need debug messages use this
 
     python WioServer.py &
     python ArduinoServer.py &
     python DaoServer.py &
     python FrontEndServer.py &
+    python PushServer.py &
     python Client.py
 
 ### Debug
@@ -96,7 +98,27 @@ While developing it is useful to have all the different servers in different ter
     python ArduinoServer.py
     python DaoServer.py
     python FrontEndServer.py
+    python PushServer.py
     python Client.py
+
+### How do I kill PushServer.py?
+PushServer is a bit odd right now, it is a gRPC server wrapping a websocket because of this the server needs to be slept then killed. Until this is fixed do the following:
+
+1) press [Ctrl][Z] in the running PushServer.py terminal
+
+2) Create an alias to kill the Server
+
+```bash
+alias killPushServer='kill -9 `ps -eopid,cmd | grep PushServer | cut -d " " -f 1`'
+```
+
+3) Run the new alias
+
+```bash
+killPushServer
+```
+
+From now on just do steps 1 and 3
 
 ## WioLink Help
 
