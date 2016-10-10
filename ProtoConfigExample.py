@@ -4,8 +4,8 @@
 import proto_out.config_pb2 as config_pb2
 
 rootUrl = 'https://us.wio.seeed.io/v1/node/'
+# See README for help https://github.com/PeridotYouClod/gRPC-Makerboards#how-do-i-find-my-access_token
 wiolinkAccessToken = 'FILL IN your access token'
-wiolinkApiKey = '?access_token=' + wiolinkAccessToken
 # Examples: Linux '/dev/ttyACM0', Windows 'COM5'
 comPort = 'FILL IN your usb port'
 
@@ -14,12 +14,14 @@ def getConfig():
   wioLinks = {
   # WioLink name doesn't have to match actual name, it is just used by the
   # server to have a nice name for when you are parsing your configs.
-  'FILL IN WioLink name': config_pb2.WioLinkConfig(rootUrl=rootUrl, apiKey=wiolinkApiKey,
+  'FILL IN WioLink name': config_pb2.WioLinkConfig(
+    rootUrl=rootUrl,
+    accessToken=wiolinkAccessToken,
     sensors={
     # Sensor name is a nice name for when you are parsing your configs.
     # apiMethod comes from your device go to
-    # https://us.wio.seeed.io/v1/node/resources/[wiolinkApiKey] in a browser to
-    # find these methods.
+    # https://us.wio.seeed.io/v1/node/resources/?access_token=[wiolinkAccessToken]
+    # in a browser to find these methods.
     'FILL IN sensor name' : config_pb2.GroveSensor(apiMethod='FILL IN api method'),
     # Examples:
     'airquality': config_pb2.GroveSensor(apiMethod='GroveAirqualityA0/quality'),
