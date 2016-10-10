@@ -63,19 +63,37 @@ Fill in your ProtoConfig.py with the instructions in the file. For help see [Wio
 ## Build the Protobufs
 Every time a .proto file is changed run this script to create new implementations of the edited protobuf or gRPC Server.
 
+Linux:
     python -m grpc.tools.protoc \
       ./protos/sensors.proto ./protos/config.proto \
       --proto_path=./protos \
       --python_out=./proto_out \
       --grpc_python_out=./proto_out \
 
+Mac:
+    python -m grpc.tools.protoc ./protos/sensors.proto ./protos/config.proto --proto_path=./protos --python_out=./proto_out --grpc_python_out=./proto_out
+
+
+
 ## How Do I Run Everything?
 The basic procedure is launch all the servers then run the Client
+
+### Production 
+If you have a working version and don't need debug messages use this
 
     python WioServer.py &
     python ArduinoServer.py &
     python DaoServer.py &
     python FrontEndServer.py &
+    python Client.py
+
+### Debug
+While developing it is useful to have all the different servers in different terminals
+
+    python WioServer.py
+    python ArduinoServer.py
+    python DaoServer.py
+    python FrontEndServer.py
     python Client.py
 
 ## WioLink Help
