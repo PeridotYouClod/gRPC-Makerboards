@@ -64,6 +64,7 @@ Fill in your ProtoConfig.py with the instructions in the file. For help see [Wio
 Every time a .proto file is changed run this script to create new implementations of the edited protobuf or gRPC Server.
 
 Linux:
+
     python -m grpc.tools.protoc \
       ./protos/sensors.proto ./protos/config.proto \
       --proto_path=./protos \
@@ -71,6 +72,7 @@ Linux:
       --grpc_python_out=./proto_out \
 
 Mac:
+
     python -m grpc.tools.protoc ./protos/sensors.proto ./protos/config.proto --proto_path=./protos --python_out=./proto_out --grpc_python_out=./proto_out
 
 
