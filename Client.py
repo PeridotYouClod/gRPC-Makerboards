@@ -9,7 +9,7 @@ def getLux(stub):
 def getTemperature(stub):
   req = sensors_pb2.GetTemperatureRequest()
   response = stub.GetTemperature(req)
-  return (response.temperature_c, round(response.temperature_f,1))
+  return (response.temperature_c, round(response.temperature_f, 1))
 
 def getIrButtonPressed(stub):
   req = sensors_pb2.GetIrButtonPressedRequest()

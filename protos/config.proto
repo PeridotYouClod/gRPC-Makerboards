@@ -8,7 +8,7 @@ message ServerConfig {
 
 message WioLinkConfig {
 	string rootUrl = 1;
-	string apiKey = 2;
+	string accessToken = 2;
 	map<string, GroveSensor> sensors = 3;
 }
 

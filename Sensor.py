@@ -10,9 +10,12 @@ class WioSensorReader(object):
   def getName(self):
     return self.groveConfig
 
+  def _accessTokenUrl(self):
+      return '?access_token=%s' % self.wioConfig.accessToken
+
   def getUrl(self):
       return (self.wioConfig.rootUrl + self.groveConfig.apiMethod
-        + self.wioConfig.apiKey)
+        + self._accessTokenUrl())
 
   def GetCurrentValue(self):
       try:
@@ -26,7 +29,7 @@ class WioSensorReader(object):
 
   def setUrl(self, urlArgsStr):
       url = (self.wioConfig.rootUrl + self.groveConfig.apiMethod
-             + urlArgsStr + self.wioConfig.apiKey)
+             + urlArgsStr + self._accessTokenUrl())
       print('setUrl: ', url)
       params = urllib.parse.urlencode({}).encode('utf-8')
       urllib.request.urlopen(url, data=params)
