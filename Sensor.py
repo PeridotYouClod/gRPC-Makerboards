@@ -1,6 +1,6 @@
-import urllib.request
 import json
 import serial
+import urllib.request
 
 class WioSensorReader(object):
   def __init__(self, wioConfig, groveName):

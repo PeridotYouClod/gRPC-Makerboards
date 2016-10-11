@@ -1,9 +1,9 @@
 import concurrent.futures as futures
-import time
 import grpc
-import serial
 import re
+import serial
 import sys
+import time
 
 import ProtoConfig
 from Sensor import WioSensorReader

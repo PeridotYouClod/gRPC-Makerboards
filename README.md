@@ -35,7 +35,7 @@
     sudo pip3 install grpcio grpcio-tools
 
     # Get required python libs
-    pip3 install pyserial pymongo urllib3 plotly futures websocket
+    pip3 install pyserial pymongo urllib3 plotly futures websocket-client
 
 ### Mac
     brew install git
@@ -53,7 +53,7 @@
     pip3 install grpcio grpcio-tools
 
     # Get required python libs
-    pip3 install pyserial pymongo urllib3 plotly futures websocket
+    pip3 install pyserial pymongo urllib3 plotly futures websocket-client
 
 ## Set up your ProtoConfig.py file
 Copy the ProtoConfigExample.py to ProtoConfig.py
@@ -106,19 +106,11 @@ PushServer is a bit odd right now, it is a gRPC server wrapping a websocket beca
 
 1) press [Ctrl][Z] in the running PushServer.py terminal
 
-2) Create an alias to kill the Server
+2)  Kill the Server
 
 ```bash
-alias killPushServer='kill -9 `ps -eopid,cmd | grep PushServer | cut -d " " -f 1`'
+kill %1
 ```
-
-3) Run the new alias
-
-```bash
-killPushServer
-```
-
-From now on just do steps 1 and 3
 
 ## WioLink Help
 

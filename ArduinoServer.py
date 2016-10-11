@@ -1,11 +1,11 @@
 import concurrent.futures as futures
-import time
 import grpc
-from Sensor import ArduinoSensorReader
-import ProtoConfig
 import re
 import sys
+import time
 
+from Sensor import ArduinoSensorReader
+import ProtoConfig
 import proto_out.sensors_pb2 as sensors_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24

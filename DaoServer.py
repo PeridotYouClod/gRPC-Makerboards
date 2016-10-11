@@ -1,11 +1,11 @@
 import concurrent.futures as futures
-import time
-import Reader
 import grpc
 import re
 import sys
+import time
 
 from Database import Mongo
+import Reader
 import proto_out.sensors_pb2 as sensors_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24

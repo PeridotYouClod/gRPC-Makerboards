@@ -1,9 +1,7 @@
 syntax = "proto3";
 
 
-// The greeting service definition.
 service FrontEnd {
-  // Sends a greeting
   rpc GetLux (GetLuxRequest) returns (GetLuxReply) {}
   rpc GetTemperature (GetTemperatureRequest) returns (GetTemperatureReply) {}
   rpc GetSound (GetSoundRequest) returns (GetSoundReply) {}
@@ -65,27 +63,21 @@ message DataColumn {
   repeated string stringValues = 5;
 }
 
-// The request message containing the user's name.
 message GetLuxRequest {}
 
-// The response message containing the greetings
 message GetLuxReply {
   int32 lux = 1;
 }
 
-// The request message containing the user's name.
 message GetTemperatureRequest {}
 
-// The response message containing the greetings
 message GetTemperatureReply {
   float temperature_c = 1;
   float temperature_f = 2;
 }
 
-// The request message containing the user's name.
 message GetSoundRequest {}
 
-// The response message containing the greetings
 message GetSoundReply {
   int32 loudness = 1;
 }
