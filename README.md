@@ -102,15 +102,7 @@ While developing it is useful to have all the different servers in different ter
     python Client.py
 
 ### How do I kill PushServer.py?
-PushServer is a bit odd right now, it is a gRPC server wrapping a websocket because of this the server needs to be slept then killed. Until this is fixed do the following:
-
-1) press [Ctrl][Z] in the running PushServer.py terminal
-
-2)  Kill the Server
-
-```bash
-kill %1
-```
+PushServer is a bit odd right now, it is a gRPC server and a websocket in the same server and both need to be killed so [Ctrl][c] twice to kill it.
 
 ## WioLink Help
 

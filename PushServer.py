@@ -45,25 +45,28 @@ class Push(sensors_pb2.PushServicer):
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
   protoConfig = ProtoConfig.getConfig()
+
   pushServer = Push(accessToken=protoConfig.wioLinks['havok'].accessToken)
   sensors_pb2.add_PushServicer_to_server(pushServer, server)
   server.add_insecure_port('[::]:%s' % PORT)
   server.start()
   print('Server Started on Port %s ' % PORT)
 
+
+  websocket.enableTrace(True)
+  ws = websocket.WebSocketApp(
+    "wss://us.wio.seeed.io/v1/node/event",
+    on_message = pushServer.on_message,
+    on_error = pushServer.on_error,
+    on_close = pushServer.on_close)
+  ws.on_open = pushServer.on_open
+  ws.run_forever()
+
   try:
     while True:
-      websocket.enableTrace(True)
-      ws = websocket.WebSocketApp(
-        "wss://us.wio.seeed.io/v1/node/event",
-        on_message = pushServer.on_message,
-        on_error = pushServer.on_error,
-        on_close = pushServer.on_close)
-      ws.on_open = pushServer.on_open
-      ws.run_forever()
+      time.sleep(_ONE_DAY_IN_SECONDS)
   except KeyboardInterrupt:
     server.stop(0)
-
 
 if __name__ == '__main__':
   serve()
