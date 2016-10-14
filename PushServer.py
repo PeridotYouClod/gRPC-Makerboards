@@ -6,7 +6,7 @@ import time
 import websocket
 
 import ProtoConfig
-import proto_out.sensors_pb2 as sensors_pb2
+import generated.proto_out.sensors_pb2 as sensors_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 PORT = 50090

@@ -1,7 +1,7 @@
 # Copy this file and name it ProtoConfig.py this is just an example it will not
 # run without you renaming and filling out all fields with FILL IN.
 
-import proto_out.config_pb2 as config_pb2
+import generated.proto_out.config_pb2 as config_pb2
 
 rootUrl = 'https://us.wio.seeed.io/v1/node/'
 # See README for help https://github.com/PeridotYouClod/gRPC-Makerboards#how-do-i-find-my-access_token

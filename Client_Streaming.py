@@ -1,6 +1,6 @@
 import grpc
 import time
-import proto_out.sensors_pb2 as sensors_pb2
+import generated.proto_out.sensors_pb2 as sensors_pb2
 
 def run():
   channel = grpc.insecure_channel('localhost:50090')

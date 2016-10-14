@@ -1,5 +1,5 @@
 import grpc
-import proto_out.sensors_pb2 as sensors_pb2
+import generated.proto_out.sensors_pb2 as sensors_pb2
 
 def getLux(stub):
   req = sensors_pb2.GetLuxRequest()
