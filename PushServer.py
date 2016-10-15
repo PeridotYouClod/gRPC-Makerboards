@@ -9,7 +9,7 @@ import ProtoConfig
 import generated.proto_out.sensors_pb2 as sensors_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
-PORT = 50090
+PORT = 50091
 
 class Push(sensors_pb2.PushServicer):
   def __init__(self, accessToken):
@@ -32,15 +32,21 @@ class Push(sensors_pb2.PushServicer):
     print("Opening and sending token %s" % self.accessToken)
     ws.send(self.accessToken);
 
-  def SubscribeButtonPressed(self, request, context):
-    if request.update.status == sensors_pb2.SubscriptionUpdate.SUBSCRIBE:
-      start_index = len(self.pressEvents)
-      print('User %s subscribed at index %s' %
-            (request.username, start_index))
-      yield sensors_pb2.GetButtonPressedReply(start_index=start_index)
+  def Subscribe(self, request, context):
+    start_index = len(self.pressEvents)
+    print('request %s' % request)
+    if request.status == sensors_pb2.SubscribeRequest.SUBSCRIBE:
+      print('User %s subscribed at index %s' % (request.username, start_index))
+    elif request.status == sensors_pb2.SubscribeRequest.UNSUBSCRIBE:
+      print('User %s unsubscribed at index %s' %
+        (request.username, start_index))
     else:
-      for pressEvent in self.pressEvents[request.index:]:
-        yield pressEvent
+      print('nop')
+    return sensors_pb2.SubscribeReply(start_index=start_index)
+
+  def StreamButtonPressed(self, request, context):
+    for pressEvent in self.pressEvents[request.index:]:
+      yield pressEvent
 
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

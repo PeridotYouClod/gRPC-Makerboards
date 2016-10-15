@@ -20,6 +20,19 @@ service FrontEnd {
   rpc GetButtonPressed (GetButtonPressedRequest) returns (GetButtonPressedReply) {}
 }
 
+/*  #FrontEnd #ServerStreaming
+    The FrontEnd server is the endpoint that most client interactions
+    should use. These are public facing and used by servers in the outside
+    world. This server is for streaming events.
+
+    Note: Currently there is no security in place so this should only be used
+    for localhost applications only be used behind a firewall.
+*/
+service PushFrontEnd {
+  rpc Subscribe(SubscribeRequest) returns (SubscribeReply) {}
+  rpc StreamButtonPressed(GetButtonPressedRequest) returns (stream GetButtonPressedReply) {}
+}
+
 /*  #Backend #Simple
     Arduino server handles interactions between Arduino brand devices & other
     servers. (New to Arduino: https://www.arduino.cc/en/Guide/Introduction)
@@ -54,27 +67,27 @@ service WioLink {
 service Dao {
   rpc Select(SelectRequest) returns (SelectReply) {}
 }
-/*  #ServerStreaming #FrontEnd
+/*  #ServerStreaming #Backend
     Push server pushes data when a sensor event occurs for the client to react
     to.
-
-    Note: This is currently a FrontEnd but it may not be for long. It may need
-    to go behind the current FrontEnd server or it may need its own PushFrontEnd
-    server.
-
-    TODO: Resolve the note above once a choice is made.
 */
 service Push {
-  rpc SubscribeButtonPressed(SubscribeButtonPressedRequest) returns (stream GetButtonPressedReply) {}
+  rpc Subscribe(SubscribeRequest) returns (SubscribeReply) {}
+  rpc StreamButtonPressed(GetButtonPressedRequest) returns (stream GetButtonPressedReply) {}
 }
 
-message SubscriptionUpdate {
+message SubscribeRequest {
   enum UpdateStatus {
     NONE = 0;
     SUBSCRIBE = 1;
     UNSUBSCRIBE = 2;
   }
   UpdateStatus status = 1;
+  string username = 2;
+}
+
+message SubscribeReply {
+  int64 start_index = 1;
 }
 
 message SelectRequest {
@@ -130,19 +143,12 @@ message GetSonarReply {
   int32 distance = 1;
 }
 
-message GetButtonPressedRequest{}
-
-message SubscribeButtonPressedRequest{
-  SubscriptionUpdate update = 1;
-  string username = 2;
-  int64 index = 3;
+message GetButtonPressedRequest{
+  int64 index = 1;
 }
 
 message GetButtonPressedReply {
 	bool pressed = 1;
-  // TODO: This may not belong here, it is for the streaming server.
-  // This value is the start index for a streaming request.
-  int64 start_index = 2;
 }
 
 message SetLedStripRequest {

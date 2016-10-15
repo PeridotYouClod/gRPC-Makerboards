@@ -1,11 +1,12 @@
 ## Runnable Files
 
-### Servers (Implemented in Python however gRPC allows any language implemtation)
-* WioServer.py - gRPC Server connecting to a [Wio Link](http://wiki.seeed.cc/Wio_Link/) via REST.
-* ArduinoServer.py - gRPC Server connecting to an [Arduino](https://www.arduino.cc/en/Guide/Introduction) via COM port.
-* FrontEndServer.py - gRPC Server communicates to backend servers to give a single connection point to the client.
-* DaoServer.py - gRPC Server for communicating with the database.
-* PushServer.py - gRPC Server for receiving push events from devices.
+### gRPC Servers (Implemented in Python however gRPC allows any language implemtation)
+* WioServer.py - Connects to one or more [Wio Links](http://wiki.seeed.cc/Wio_Link/) via REST.
+* ArduinoServer.py - Connects to one or more  [Arduinos](https://www.arduino.cc/en/Guide/Introduction) via COM port.
+* FrontEndServer.py - Communicates to backend servers to give a single connection point to the client.
+* PushFrontEnd.py - Communicates to backend servers to give a single connection point to the client for streaming requests.
+* DaoServer.py - Communicate with the database.
+* PushServer.py - Receive push events from devices.
 
 ### Clients
 * Client.py - Simple gRPC Client example.
