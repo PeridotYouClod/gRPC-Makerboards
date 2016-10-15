@@ -69,14 +69,14 @@ Every time a .proto file is changed run this script to create new implementation
 Linux:
 
     python -m grpc.tools.protoc \
-      ./proto/sensors.proto ./proto/config.proto \
+      ./proto/*.proto \
       --proto_path=./proto/ \
       --python_out=./generated/proto_out \
       --grpc_python_out=./generated/proto_out
 
 Mac:
 
-    python -m grpc.tools.protoc ./proto/sensors.proto .proto/config.proto  --proto_path=./proto/  --python_out=./generated/proto_out  --grpc_python_out=./generated/proto_out
+    python -m grpc.tools.protoc ./proto/*.proto --proto_path=./proto/  --python_out=./generated/proto_out  --grpc_python_out=./generated/proto_out
 
 ## How Do I Run Everything?
 The basic procedure is launch all the servers then run a Client

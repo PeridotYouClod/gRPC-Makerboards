@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+/* #Database #Simple
+    Dao server handles interactions between servers and the database.
+
+    Note: Do not have clients depend on this it should be behind a
+    Backend Server behind a FrontEnd.
+*/
+service Dao {
+  rpc Select(SelectRequest) returns (SelectReply) {}
+}
+
+message SelectRequest {
+  string table = 1;
+  int32 limit = 2;
+  repeated RequestCol cols = 3;
+}
+
+message RequestCol {
+  string name = 1;
+}
+
+message SelectReply {
+  repeated DataColumn columns = 1;
+}
+
+message DataColumn {
+  string name = 1;
+  repeated int32 intValues = 2;
+  repeated double doubleValues = 3;
+  repeated bool boolValues = 4;
+  repeated string stringValues = 5;
+}

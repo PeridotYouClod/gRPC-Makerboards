@@ -58,15 +58,7 @@ service WioLink {
   rpc GetButtonPressed (GetButtonPressedRequest) returns (GetButtonPressedReply) {}
 }
 
-/* #Database #Simple
-    Dao server handles interactions between servers and the database.
 
-    Note: Do not have clients depend on this it should be behind a
-    Backend Server behind a FrontEnd.
-*/
-service Dao {
-  rpc Select(SelectRequest) returns (SelectReply) {}
-}
 /*  #ServerStreaming #Backend
     Push server pushes data when a sensor event occurs for the client to react
     to.
@@ -88,28 +80,6 @@ message SubscribeRequest {
 
 message SubscribeReply {
   int64 start_index = 1;
-}
-
-message SelectRequest {
-  string table = 1;
-  int32 limit = 2;
-  repeated RequestCol cols = 3;
-}
-
-message RequestCol {
-  string name = 1;
-}
-
-message SelectReply {
-  repeated DataColumn columns = 1;
-}
-
-message DataColumn {
-  string name = 1;
-  repeated int32 intValues = 2;
-  repeated double doubleValues = 3;
-  repeated bool boolValues = 4;
-  repeated string stringValues = 5;
 }
 
 message GetLuxRequest {}

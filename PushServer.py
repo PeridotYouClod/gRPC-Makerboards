@@ -1,7 +1,5 @@
 import concurrent.futures as futures
 import grpc
-import re
-import sys
 import time
 import websocket
 
@@ -56,8 +54,7 @@ def serve():
   sensors_pb2.add_PushServicer_to_server(pushServer, server)
   server.add_insecure_port('[::]:%s' % PORT)
   server.start()
-  print('Server Started on Port %s ' % PORT)
-
+  print('Started Push Server on Port %s ' % PORT)
 
   websocket.enableTrace(True)
   ws = websocket.WebSocketApp(

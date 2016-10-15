@@ -1,5 +1,6 @@
 import grpc
 import generated.proto_out.sensors_pb2 as sensors_pb2
+import generated.proto_out.dao_pb2 as dao_pb2
 
 def getLux(stub):
   req = sensors_pb2.GetLuxRequest()
@@ -33,7 +34,7 @@ def run():
   stub = sensors_pb2.FrontEndStub(channel)
 
   dbchannel = grpc.insecure_channel('localhost:50040')
-  dbstub = sensors_pb2.DaoStub(dbchannel)
+  dbstub = dao_pb2.DaoStub(dbchannel)
 
   lux = getLux(stub)
   print('lux: ', lux)
@@ -56,12 +57,12 @@ def run():
     speed=5)
   response = stub.SetLedStrip(req)
 
-  req = sensors_pb2.SelectRequest(
+  req = dao_pb2.SelectRequest(
     table='lux',
     limit=10,
     cols=[
-      sensors_pb2.RequestCol(name='lux'),
-      sensors_pb2.RequestCol(name='date')
+      dao_pb2.RequestCol(name='lux'),
+      dao_pb2.RequestCol(name='date')
       ],
     )
   columns = dbstub.Select(req).columns

@@ -31,7 +31,7 @@ def serve():
   sensors_pb2.add_ArduinoServicer_to_server(Arduino(), server)
   server.add_insecure_port('[::]:%s' % PORT)
   server.start()
-  print('Server Started on Port %s ' % PORT)
+  print('Started Arduino Server on Port %s ' % PORT)
 
   try:
     while True:

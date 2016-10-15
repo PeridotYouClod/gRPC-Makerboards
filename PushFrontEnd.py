@@ -1,8 +1,5 @@
 import concurrent.futures as futures
 import grpc
-import re
-import serial
-import sys
 import time
 
 import ProtoConfig
@@ -32,9 +29,8 @@ def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
   sensors_pb2.add_PushFrontEndServicer_to_server(PushFrontEnd(), server)
   server.add_insecure_port('[::]:%s' % PORT)
-  print('Starting Server...')
   server.start()
-  print('Server Started on Port %s' % PORT)
+  print('Started PushFrontEnd Server on Port %s ' % PORT)
 
   try:
     while True:
