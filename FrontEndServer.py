@@ -1,12 +1,8 @@
 import concurrent.futures as futures
 import grpc
-import re
-import serial
-import sys
 import time
 
 import ProtoConfig
-from Sensor import WioSensorReader
 import generated.proto_out.sensors_pb2 as sensors_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
@@ -17,9 +13,8 @@ class FrontEnd(sensors_pb2.FrontEndServicer):
     super().__init__()
     wioChannel = grpc.insecure_channel('localhost:50051')
     self.wioStub = sensors_pb2.WioLinkStub(wioChannel)
-    channel = grpc.insecure_channel('localhost:50052')
-    self.arduinoStub = sensors_pb2.ArduinoStub(channel)
-
+    arduinoChannel = grpc.insecure_channel('localhost:50052')
+    self.arduinoStub = sensors_pb2.ArduinoStub(arduinoChannel)
 
   def GetIrButtonPressed(self, request, context):
     print('GetIrButtonPressed')

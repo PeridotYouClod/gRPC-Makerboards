@@ -1,7 +1,5 @@
 import concurrent.futures as futures
 import grpc
-import re
-import sys
 import time
 
 from Sensor import ArduinoSensorReader

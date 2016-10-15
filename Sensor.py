@@ -48,8 +48,12 @@ class ArduinoSensorReader(object):
 
   def GetCurrentValue(self):
     serial_value = self.serial.readline()
-    print('Returning Arduino Value: %s' % serial_value)
-    clean_value = int(serial_value)
+    print('Got Arduino Value: %s' % serial_value)
+    try:
+        clean_value = int(serial_value)
+    except ValueError as e:
+        print("Got value error %s returning 0" % e)
+        clean_value = 0
     self.serial.reset_input_buffer()
     return clean_value
 

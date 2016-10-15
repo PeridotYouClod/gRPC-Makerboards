@@ -9,7 +9,7 @@ import Reader
 import generated.proto_out.sensors_pb2 as sensors_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
-PORT = 50049
+PORT = 50040
 
 class Dao(sensors_pb2.DaoServicer):
   def __init__(self, sensor_db):

@@ -32,7 +32,7 @@ def run():
   channel = grpc.insecure_channel('localhost:50050')
   stub = sensors_pb2.FrontEndStub(channel)
 
-  dbchannel = grpc.insecure_channel('localhost:50049')
+  dbchannel = grpc.insecure_channel('localhost:50040')
   dbstub = sensors_pb2.DaoStub(dbchannel)
 
   lux = getLux(stub)
