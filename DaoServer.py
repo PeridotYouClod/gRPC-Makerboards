@@ -4,9 +4,9 @@ import re
 import sys
 import time
 
-from Database import Mongo
 import Reader
 import generated.proto_out.dao_pb2 as dao_pb2
+from pylibs.Database import Mongo
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 PORT = 50040

@@ -1,10 +1,10 @@
-import json
 from time import sleep, strftime, gmtime, time
 import urllib.request
 
-from Database import Mongo
+from pylibs.Database import Mongo
+from pylibs.Sensor import WioSensorReader, SensorDbWriter
 import ProtoConfig
-from Sensor import WioSensorReader, SensorDbWriter
+
 
 sleep_time_sec = 10
 

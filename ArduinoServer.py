@@ -2,9 +2,9 @@ import concurrent.futures as futures
 import grpc
 import time
 
-from Sensor import ArduinoSensorReader
 import ProtoConfig
 import generated.proto_out.sensors_pb2 as sensors_pb2
+from pylibs.Sensor import ArduinoSensorReader
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 PORT = 50052

@@ -1,7 +1,7 @@
 import plotly
 from plotly.graph_objs import Scatter, Layout
 
-from Database import Mongo
+from pylibs.Database import Mongo
 
 def GenScatterData(colname, size=None):
   x_axis = []

@@ -2,9 +2,9 @@ import concurrent.futures as futures
 import time
 import grpc
 
-from Sensor import WioSensorReader
 import ProtoConfig
 import generated.proto_out.sensors_pb2 as sensors_pb2
+from pylibs.Sensor import WioSensorReader
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 PORT = 50051
@@ -40,19 +40,6 @@ class WioLink(sensors_pb2.WioLinkServicer):
     sound = self.sound.GetCurrentValue()
     print('Returning Loudness: %s' % sound)
     return sensors_pb2.GetSoundReply(loudness=sound['loudness'])
-
-  def GetIrButtonPressed(self, request, context):
-    serial_value = self.ser.readline()
-    clean_value = int(serial_value)
-    print('Returning Button Press: %s' % clean_value)
-    return sensors_pb2.GetIrButtonPressedReply(button=clean_value)
-
-  def GetSonar(self, request, context):
-    serial_value = self.ser.readline()
-    clean_value = int(serial_value)
-    self.ser.reset_input_buffer()
-    print('Returning Sonar: %s' % clean_value)
-    return sensors_pb2.GetSonarReply(distance=clean_value)
 
   def SetLedStrip(self, req, context):
     url = '/%s/%s/%s' % (req.length, req.brightness, req.speed)
