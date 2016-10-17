@@ -7,12 +7,10 @@ import generated.proto_out.sensors_pb2 as sensors_pb2
 from pylibs.Sensor import WioSensorReader
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
-PORT = 50051
 
 class WioLink(sensors_pb2.WioLinkServicer):
-  def __init__(self):
+  def __init__(self, protoConfig):
     super().__init__()
-    protoConfig = ProtoConfig.getConfig()
 
     wioHavok = protoConfig.wioLinks['havok']
     wioKairi = protoConfig.wioLinks['kairi']
@@ -55,11 +53,13 @@ class WioLink(sensors_pb2.WioLinkServicer):
     return sensors_pb2.GetButtonPressedReply(pressed=val)
 
 def serve():
+  protoConfig = ProtoConfig.getConfig()
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  sensors_pb2.add_WioLinkServicer_to_server(WioLink(), server)
-  server.add_insecure_port('[::]:%s' % PORT)
+  sensors_pb2.add_WioLinkServicer_to_server(WioLink(protoConfig), server)
+  port = protoConfig.ports.wioPort
+  server.add_insecure_port('[::]:%s' % port)
   server.start()
-  print('Started Wio Server on Port %s ' % PORT)
+  print('Started Wio Server on Port %s ' % port)
 
   try:
     while True:

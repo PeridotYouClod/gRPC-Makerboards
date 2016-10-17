@@ -7,7 +7,6 @@ import ProtoConfig
 import generated.proto_out.sensors_pb2 as sensors_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
-PORT = 50091
 
 class Push(sensors_pb2.PushServicer):
   def __init__(self, accessToken):
@@ -47,14 +46,14 @@ class Push(sensors_pb2.PushServicer):
       yield pressEvent
 
 def serve():
-  server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
   protoConfig = ProtoConfig.getConfig()
-
+  server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
   pushServer = Push(accessToken=protoConfig.wioLinks['havok'].accessToken)
   sensors_pb2.add_PushServicer_to_server(pushServer, server)
-  server.add_insecure_port('[::]:%s' % PORT)
+  port = protoConfig.ports.pushPort
+  server.add_insecure_port('[::]:%s' % port)
   server.start()
-  print('Started Push Server on Port %s ' % PORT)
+  print('Started Push Server on Port %s ' % port)
 
   websocket.enableTrace(True)
   ws = websocket.WebSocketApp(

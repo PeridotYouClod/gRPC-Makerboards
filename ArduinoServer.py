@@ -7,13 +7,10 @@ import generated.proto_out.sensors_pb2 as sensors_pb2
 from pylibs.Sensor import ArduinoSensorReader
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
-PORT = 50052
 
 class Arduino(sensors_pb2.ArduinoServicer):
-  def __init__(self):
+  def __init__(self, arduino):
     super().__init__()
-    protoConfig = ProtoConfig.getConfig()
-    arduino = protoConfig.arduinos[0]
     self.sensorReader = ArduinoSensorReader(arduino)
 
   def GetIrButtonPressed(self, request, context):
@@ -27,11 +24,15 @@ class Arduino(sensors_pb2.ArduinoServicer):
     return sensors_pb2.GetSonarReply(distance=clean_value)
 
 def serve():
+  protoConfig = ProtoConfig.getConfig()
+  arduino = protoConfig.arduinos[0]
+
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  sensors_pb2.add_ArduinoServicer_to_server(Arduino(), server)
-  server.add_insecure_port('[::]:%s' % PORT)
+  sensors_pb2.add_ArduinoServicer_to_server(Arduino(arduino), server)
+  port = protoConfig.ports.arduinoPort
+  server.add_insecure_port('[::]:%s' % port)
   server.start()
-  print('Started Arduino Server on Port %s ' % PORT)
+  print('Started Arduino Server on Port %s ' % port)
 
   try:
     while True:

@@ -6,7 +6,6 @@ import ProtoConfig
 import generated.proto_out.sensors_pb2 as sensors_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
-PORT = 50090
 
 class PushFrontEnd(sensors_pb2.PushFrontEndServicer):
   def __init__(self):
@@ -26,11 +25,13 @@ class PushFrontEnd(sensors_pb2.PushFrontEndServicer):
           yield press
 
 def serve():
+  protoConfig = ProtoConfig.getConfig()
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
   sensors_pb2.add_PushFrontEndServicer_to_server(PushFrontEnd(), server)
-  server.add_insecure_port('[::]:%s' % PORT)
+  port = protoConfig.ports.pushFrontEndPort
+  server.add_insecure_port('[::]:%s' % port)
   server.start()
-  print('Started PushFrontEnd Server on Port %s ' % PORT)
+  print('Started PushFrontEnd Server on Port %s ' % port)
 
   try:
     while True:

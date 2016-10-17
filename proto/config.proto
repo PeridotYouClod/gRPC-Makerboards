@@ -4,6 +4,7 @@ message ServerConfig {
   // The collection of External WioLinks
   map<string, WioLinkConfig> wioLinks = 1;
   repeated ArduinoConfig arduinos = 2;
+  PortConfig ports = 3;
 }
 
 message WioLinkConfig {
@@ -19,4 +20,18 @@ message GroveSensor {
 message ArduinoConfig {
 	string comPort = 1;
 	int32 baudRate = 2;
+}
+
+message PortConfig {
+  // Sensor Servers
+  int32 frontEndPort = 1;
+  int32 arduinoPort = 2;
+  int32 wioPort = 3;
+
+  // Event Servers
+  int32 pushFrontEndPort = 4;
+  int32 pushPort = 5;
+
+  // Database
+  int32 daoPort = 6;
 }

@@ -1,15 +1,12 @@
 import concurrent.futures as futures
 import grpc
-import re
-import sys
 import time
 
-import Reader
+import ProtoConfig
 import generated.proto_out.dao_pb2 as dao_pb2
 from pylibs.Database import Mongo
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
-PORT = 50040
 
 class Dao(dao_pb2.DaoServicer):
   def __init__(self, sensor_db):
@@ -46,13 +43,15 @@ class Dao(dao_pb2.DaoServicer):
 
 
 def serve():
+  protoConfig = ProtoConfig.getConfig()
   sensor_db = Mongo()
   sensor_db.GetClient() # initalize the Db
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
   dao_pb2.add_DaoServicer_to_server(Dao(sensor_db), server)
-  server.add_insecure_port('[::]:%s' % PORT)
+  port = protoConfig.ports.daoPort
+  server.add_insecure_port('[::]:%s' % port)
   server.start()
-  print('Started Dao Server on Port %s ' % PORT)
+  print('Started Dao Server on Port %s ' % port)
 
   try:
     while True:

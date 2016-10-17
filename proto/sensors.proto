@@ -58,7 +58,6 @@ service WioLink {
   rpc GetButtonPressed (GetButtonPressedRequest) returns (GetButtonPressedReply) {}
 }
 
-
 /*  #ServerStreaming #Backend
     Push server pushes data when a sensor event occurs for the client to react
     to.

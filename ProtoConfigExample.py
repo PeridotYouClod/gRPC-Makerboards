@@ -31,4 +31,16 @@ def getConfig():
    # This is a map so feel free to add another device
   }
   arduinos = [config_pb2.ArduinoConfig(comPort=comPort, baudRate=9800)]
-  return config_pb2.ServerConfig(wioLinks=wioLinks, arduinos=arduinos)
+  # Choose a port for each server. The important part is that none of these are
+  # the same number. Feel free to change these at will.
+  ports = config_pb2.PortConfig(
+      frontEndPort=50000,
+      wioPort=50001,
+      arduinoPort=50002,
+      pushFrontEndPort=50003,
+      pushPort=50004,
+      daoPort=50005,
+    )
+    return config_pb2.ServerConfig(
+      wioLinks=wioLinks, arduinos=arduinos, ports=ports,
+    )

@@ -6,7 +6,6 @@ import ProtoConfig
 import generated.proto_out.sensors_pb2 as sensors_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
-PORT = 50050
 
 class FrontEnd(sensors_pb2.FrontEndServicer):
   def __init__(self):
@@ -46,11 +45,13 @@ class FrontEnd(sensors_pb2.FrontEndServicer):
     return self.wioStub.GetButtonPressed(sensors_pb2.GetButtonPressedRequest())
 
 def serve():
+  protoConfig = ProtoConfig.getConfig()
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
   sensors_pb2.add_FrontEndServicer_to_server(FrontEnd(), server)
-  server.add_insecure_port('[::]:%s' % PORT)
+  port = protoConfig.ports.frontEndPort
+  server.add_insecure_port('[::]:%s' % port)
   server.start()
-  print('Started FrontEnd Server on Port %s ' % PORT)
+  print('Started FrontEnd Server on Port %s ' % port)
 
   try:
     while True:
