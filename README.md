@@ -18,6 +18,11 @@
 ### Visualization
 * Graph.py - Reads the values from the Mongo Database and Graphs it.
 
+### Protobuf Files
+* config.proto - Defines how the config file should be created.  
+* sensors.proto - Defines each of the Servers and all of the messages to the sensors. (TODO: too much currenty, break it up)
+* dao.proto - Defines the Dao Server and the query and reply fo database interactions.
+
 ## Set Up Environment
 
 ### Linux
