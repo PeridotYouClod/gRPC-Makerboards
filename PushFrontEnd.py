@@ -8,9 +8,9 @@ import generated.proto_out.sensors_pb2 as sensors_pb2
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 class PushFrontEnd(sensors_pb2.PushFrontEndServicer):
-  def __init__(self):
+  def __init__(self, protoConfig):
     super().__init__()
-    pushchannel = grpc.insecure_channel('localhost:50091')
+    pushchannel = grpc.insecure_channel('localhost:%s' % protoConfig.ports.pushPort)
     self.pushStub = sensors_pb2.PushStub(pushchannel)
 
   def Subscribe(self, request, context):
@@ -27,7 +27,7 @@ class PushFrontEnd(sensors_pb2.PushFrontEndServicer):
 def serve():
   protoConfig = ProtoConfig.getConfig()
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  sensors_pb2.add_PushFrontEndServicer_to_server(PushFrontEnd(), server)
+  sensors_pb2.add_PushFrontEndServicer_to_server(PushFrontEnd(protoConfig), server)
   port = protoConfig.ports.pushFrontEndPort
   server.add_insecure_port('[::]:%s' % port)
   server.start()

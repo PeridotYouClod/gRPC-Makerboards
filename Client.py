@@ -1,6 +1,7 @@
 import grpc
 import generated.proto_out.sensors_pb2 as sensors_pb2
 import generated.proto_out.dao_pb2 as dao_pb2
+import ProtoConfig
 
 def getLux(stub):
   req = sensors_pb2.GetLuxRequest()
@@ -30,10 +31,11 @@ def getSonar(stub):
   return response.distance
 
 def run():
-  channel = grpc.insecure_channel('localhost:50050')
+  protoConfig = ProtoConfig.getConfig()
+  channel = grpc.insecure_channel('localhost:%s' % protoConfig.ports.frontEndPort)
   stub = sensors_pb2.FrontEndStub(channel)
 
-  dbchannel = grpc.insecure_channel('localhost:50040')
+  dbchannel = grpc.insecure_channel('localhost:%s' % protoConfig.ports.daoPort)
   dbstub = dao_pb2.DaoStub(dbchannel)
 
   lux = getLux(stub)
