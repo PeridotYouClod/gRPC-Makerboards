@@ -6,6 +6,8 @@ import generated.proto_out.config_pb2 as config_pb2
 rootUrl = 'https://us.wio.seeed.io/v1/node/'
 # See README for help https://github.com/PeridotYouClod/gRPC-Makerboards#how-do-i-find-my-access_token
 wiolinkAccessToken = 'FILL IN your access token'
+
+# https://github.com/PeridotYouClod/gRPC-Makerboards#how-do-i-find-my-comport
 # Examples: Linux '/dev/ttyACM0', Windows 'COM5'
 comPort = 'FILL IN your usb port'
 
@@ -30,7 +32,10 @@ def getConfig():
     }),
    # This is a map so feel free to add another device
   }
-  arduinos = [config_pb2.ArduinoConfig(comPort=comPort, baudRate=9800)]
+  arduinos = [config_pb2.ArduinoConfig(
+    comPort=comPort,
+    baudRate=9800),
+    ]
   # Choose a port for each server. The important part is that none of these are
   # the same number. Feel free to change these at will.
   ports = config_pb2.PortConfig(
@@ -42,5 +47,7 @@ def getConfig():
       daoPort=50005,
     )
     return config_pb2.ServerConfig(
-      wioLinks=wioLinks, arduinos=arduinos, ports=ports,
+      wioLinks=wioLinks,
+      arduinos=arduinos,
+      ports=ports,
     )
