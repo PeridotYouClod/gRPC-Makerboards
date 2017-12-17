@@ -57,6 +57,11 @@ class ArduinoSensorReader(object):
     self.serial.reset_input_buffer()
     return clean_value
 
+  def sendRfBlast(self, button, on):
+    opcode = "%s%s" % (bin(button)[2:], bin(on)[2:])
+    self.serial.write(opcode.encode())
+
+
 class SensorDbWriter(object):
   def __init__(self, sensor, db_col):
     print('sensor: %s\ndb_col: %s' % (sensor, db_col))

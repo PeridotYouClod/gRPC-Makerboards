@@ -23,6 +23,12 @@ class Arduino(sensors_pb2.ArduinoServicer):
     print('Returning Sonar: %s' % clean_value)
     return sensors_pb2.GetSonarReply(distance=clean_value)
 
+  def SendToRfBlaster(self, request, context):
+    print("Sending RF Blaster Button Press: %s" % request)
+    self.sensorReader.sendRfBlast(request.button,request.on)
+    return sensors_pb2.SendToRfBlasterReply(success=True)
+
+
 def serve():
   protoConfig = ProtoConfig.getConfig()
   arduino = protoConfig.arduinos[0]
