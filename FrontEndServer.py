@@ -44,6 +44,16 @@ class FrontEnd(sensors_pb2.FrontEndServicer):
     print('GetButtonPressed')
     return self.wioStub.GetButtonPressed(sensors_pb2.GetButtonPressedRequest())
 
+  def SendToRfBlaster(self, req, context):
+    print('SendToRfBlaster')
+    blasterRequest = sensors_pb2.SendToRfBlasterRequest(
+      button=req.button,
+      on=req.on
+    )
+    print("blasterRequest: %s" % blasterRequest)
+    return self.arduinoStub.SendToRfBlaster(blasterRequest)
+
+
 def serve():
   protoConfig = ProtoConfig.getConfig()
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
