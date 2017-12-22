@@ -21,7 +21,6 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_pb=_b('\n\rsensors.proto\"\x8e\x01\n\x10SubscribeRequest\x12.\n\x06status\x18\x01 \x01(\x0e\x32\x1e.SubscribeRequest.UpdateStatus\x12\x10\n\x08username\x18\x02 \x01(\t\"8\n\x0cUpdateStatus\x12\x08\n\x04NONE\x10\x00\x12\r\n\tSUBSCRIBE\x10\x01\x12\x0f\n\x0bUNSUBSCRIBE\x10\x02\"%\n\x0eSubscribeReply\x12\x13\n\x0bstart_index\x18\x01 \x01(\x03\"\x0f\n\rGetLuxRequest\"\x1a\n\x0bGetLuxReply\x12\x0b\n\x03lux\x18\x01 \x01(\x05\"\x17\n\x15GetTemperatureRequest\"C\n\x13GetTemperatureReply\x12\x15\n\rtemperature_c\x18\x01 \x01(\x02\x12\x15\n\rtemperature_f\x18\x02 \x01(\x02\"\x11\n\x0fGetSoundRequest\"!\n\rGetSoundReply\x12\x10\n\x08loudness\x18\x01 \x01(\x05\"\x1b\n\x19GetIrButtonPressedRequest\")\n\x17GetIrButtonPressedReply\x12\x0e\n\x06\x62utton\x18\x01 \x01(\x05\"\x11\n\x0fGetSonarRequest\"!\n\rGetSonarReply\x12\x10\n\x08\x64istance\x18\x01 \x01(\x05\"(\n\x17GetButtonPressedRequest\x12\r\n\x05index\x18\x01 \x01(\x03\"(\n\x15GetButtonPressedReply\x12\x0f\n\x07pressed\x18\x01 \x01(\x08\"G\n\x12SetLedStripRequest\x12\x0e\n\x06length\x18\x01 \x01(\x05\x12\x12\n\nbrightness\x18\x02 \x01(\x05\x12\r\n\x05speed\x18\x03 \x01(\x05\"\x12\n\x10SetLedStripReply\"4\n\x16SendToRfBlasterRequest\x12\x0e\n\x06\x62utton\x18\x01 \x01(\x05\x12\n\n\x02on\x18\x02 \x01(\x08\"\'\n\x14SendToRfBlasterReply\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32\xea\x03\n\x08\x46rontEnd\x12(\n\x06GetLux\x12\x0e.GetLuxRequest\x1a\x0c.GetLuxReply\"\x00\x12@\n\x0eGetTemperature\x12\x16.GetTemperatureRequest\x1a\x14.GetTemperatureReply\"\x00\x12.\n\x08GetSound\x12\x10.GetSoundRequest\x1a\x0e.GetSoundReply\"\x00\x12L\n\x12GetIrButtonPressed\x12\x1a.GetIrButtonPressedRequest\x1a\x18.GetIrButtonPressedReply\"\x00\x12.\n\x08GetSonar\x12\x10.GetSonarRequest\x1a\x0e.GetSonarReply\"\x00\x12\x37\n\x0bSetLedStrip\x12\x13.SetLedStripRequest\x1a\x11.SetLedStripReply\"\x00\x12\x46\n\x10GetButtonPressed\x12\x18.GetButtonPressedRequest\x1a\x16.GetButtonPressedReply\"\x00\x12\x43\n\x0fSendToRfBlaster\x12\x17.SendToRfBlasterRequest\x1a\x15.SendToRfBlasterReply\"\x00\x32\x8e\x01\n\x0cPushFrontEnd\x12\x31\n\tSubscribe\x12\x11.SubscribeRequest\x1a\x0f.SubscribeReply\"\x00\x12K\n\x13StreamButtonPressed\x12\x18.GetButtonPressedRequest\x1a\x16.GetButtonPressedReply\"\x00\x30\x01\x32\xcc\x01\n\x07\x41rduino\x12L\n\x12GetIrButtonPressed\x12\x1a.GetIrButtonPressedRequest\x1a\x18.GetIrButtonPressedReply\"\x00\x12.\n\x08GetSonar\x12\x10.GetSonarRequest\x1a\x0e.GetSonarReply\"\x00\x12\x43\n\x0fSendToRfBlaster\x12\x17.SendToRfBlasterRequest\x1a\x15.SendToRfBlasterReply\"\x00\x32\xa6\x02\n\x07WioLink\x12(\n\x06GetLux\x12\x0e.GetLuxRequest\x1a\x0c.GetLuxReply\"\x00\x12@\n\x0eGetTemperature\x12\x16.GetTemperatureRequest\x1a\x14.GetTemperatureReply\"\x00\x12.\n\x08GetSound\x12\x10.GetSoundRequest\x1a\x0e.GetSoundReply\"\x00\x12\x37\n\x0bSetLedStrip\x12\x13.SetLedStripRequest\x1a\x11.SetLedStripReply\"\x00\x12\x46\n\x10GetButtonPressed\x12\x18.GetButtonPressedRequest\x1a\x16.GetButtonPressedReply\"\x00\x32\x86\x01\n\x04Push\x12\x31\n\tSubscribe\x12\x11.SubscribeRequest\x1a\x0f.SubscribeReply\"\x00\x12K\n\x13StreamButtonPressed\x12\x18.GetButtonPressedRequest\x1a\x16.GetButtonPressedReply\"\x00\x30\x01\x62\x06proto3')
 )
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 
@@ -65,14 +64,14 @@ _SUBSCRIBEREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='username', full_name='SubscribeRequest.username', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -104,7 +103,7 @@ _SUBSCRIBEREPLY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -159,7 +158,7 @@ _GETLUXREPLY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -214,14 +213,14 @@ _GETTEMPERATUREREPLY = _descriptor.Descriptor(
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='temperature_f', full_name='GetTemperatureReply.temperature_f', index=1,
       number=2, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -276,7 +275,7 @@ _GETSOUNDREPLY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -331,7 +330,7 @@ _GETIRBUTTONPRESSEDREPLY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -386,7 +385,7 @@ _GETSONARREPLY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -417,7 +416,7 @@ _GETBUTTONPRESSEDREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -448,7 +447,7 @@ _GETBUTTONPRESSEDREPLY = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -479,21 +478,21 @@ _SETLEDSTRIPREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='brightness', full_name='SetLedStripRequest.brightness', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='speed', full_name='SetLedStripRequest.speed', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -548,14 +547,14 @@ _SENDTORFBLASTERREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='on', full_name='SendToRfBlasterRequest.on', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -586,7 +585,7 @@ _SENDTORFBLASTERREPLY = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -623,6 +622,7 @@ DESCRIPTOR.message_types_by_name['SetLedStripRequest'] = _SETLEDSTRIPREQUEST
 DESCRIPTOR.message_types_by_name['SetLedStripReply'] = _SETLEDSTRIPREPLY
 DESCRIPTOR.message_types_by_name['SendToRfBlasterRequest'] = _SENDTORFBLASTERREQUEST
 DESCRIPTOR.message_types_by_name['SendToRfBlasterReply'] = _SENDTORFBLASTERREPLY
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 SubscribeRequest = _reflection.GeneratedProtocolMessageType('SubscribeRequest', (_message.Message,), dict(
   DESCRIPTOR = _SUBSCRIBEREQUEST,
@@ -751,908 +751,259 @@ SendToRfBlasterReply = _reflection.GeneratedProtocolMessageType('SendToRfBlaster
 _sym_db.RegisterMessage(SendToRfBlasterReply)
 
 
-import grpc
-from grpc.beta import implementations as beta_implementations
-from grpc.beta import interfaces as beta_interfaces
-from grpc.framework.common import cardinality
-from grpc.framework.interfaces.face import utilities as face_utilities
 
+_FRONTEND = _descriptor.ServiceDescriptor(
+  name='FrontEnd',
+  full_name='FrontEnd',
+  file=DESCRIPTOR,
+  index=0,
+  options=None,
+  serialized_start=793,
+  serialized_end=1283,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='GetLux',
+    full_name='FrontEnd.GetLux',
+    index=0,
+    containing_service=None,
+    input_type=_GETLUXREQUEST,
+    output_type=_GETLUXREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetTemperature',
+    full_name='FrontEnd.GetTemperature',
+    index=1,
+    containing_service=None,
+    input_type=_GETTEMPERATUREREQUEST,
+    output_type=_GETTEMPERATUREREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetSound',
+    full_name='FrontEnd.GetSound',
+    index=2,
+    containing_service=None,
+    input_type=_GETSOUNDREQUEST,
+    output_type=_GETSOUNDREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetIrButtonPressed',
+    full_name='FrontEnd.GetIrButtonPressed',
+    index=3,
+    containing_service=None,
+    input_type=_GETIRBUTTONPRESSEDREQUEST,
+    output_type=_GETIRBUTTONPRESSEDREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetSonar',
+    full_name='FrontEnd.GetSonar',
+    index=4,
+    containing_service=None,
+    input_type=_GETSONARREQUEST,
+    output_type=_GETSONARREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='SetLedStrip',
+    full_name='FrontEnd.SetLedStrip',
+    index=5,
+    containing_service=None,
+    input_type=_SETLEDSTRIPREQUEST,
+    output_type=_SETLEDSTRIPREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetButtonPressed',
+    full_name='FrontEnd.GetButtonPressed',
+    index=6,
+    containing_service=None,
+    input_type=_GETBUTTONPRESSEDREQUEST,
+    output_type=_GETBUTTONPRESSEDREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='SendToRfBlaster',
+    full_name='FrontEnd.SendToRfBlaster',
+    index=7,
+    containing_service=None,
+    input_type=_SENDTORFBLASTERREQUEST,
+    output_type=_SENDTORFBLASTERREPLY,
+    options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_FRONTEND)
+
+DESCRIPTOR.services_by_name['FrontEnd'] = _FRONTEND
+
+
+_PUSHFRONTEND = _descriptor.ServiceDescriptor(
+  name='PushFrontEnd',
+  full_name='PushFrontEnd',
+  file=DESCRIPTOR,
+  index=1,
+  options=None,
+  serialized_start=1286,
+  serialized_end=1428,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='Subscribe',
+    full_name='PushFrontEnd.Subscribe',
+    index=0,
+    containing_service=None,
+    input_type=_SUBSCRIBEREQUEST,
+    output_type=_SUBSCRIBEREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='StreamButtonPressed',
+    full_name='PushFrontEnd.StreamButtonPressed',
+    index=1,
+    containing_service=None,
+    input_type=_GETBUTTONPRESSEDREQUEST,
+    output_type=_GETBUTTONPRESSEDREPLY,
+    options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_PUSHFRONTEND)
+
+DESCRIPTOR.services_by_name['PushFrontEnd'] = _PUSHFRONTEND
+
+
+_ARDUINO = _descriptor.ServiceDescriptor(
+  name='Arduino',
+  full_name='Arduino',
+  file=DESCRIPTOR,
+  index=2,
+  options=None,
+  serialized_start=1431,
+  serialized_end=1635,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='GetIrButtonPressed',
+    full_name='Arduino.GetIrButtonPressed',
+    index=0,
+    containing_service=None,
+    input_type=_GETIRBUTTONPRESSEDREQUEST,
+    output_type=_GETIRBUTTONPRESSEDREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetSonar',
+    full_name='Arduino.GetSonar',
+    index=1,
+    containing_service=None,
+    input_type=_GETSONARREQUEST,
+    output_type=_GETSONARREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='SendToRfBlaster',
+    full_name='Arduino.SendToRfBlaster',
+    index=2,
+    containing_service=None,
+    input_type=_SENDTORFBLASTERREQUEST,
+    output_type=_SENDTORFBLASTERREPLY,
+    options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_ARDUINO)
+
+DESCRIPTOR.services_by_name['Arduino'] = _ARDUINO
+
+
+_WIOLINK = _descriptor.ServiceDescriptor(
+  name='WioLink',
+  full_name='WioLink',
+  file=DESCRIPTOR,
+  index=3,
+  options=None,
+  serialized_start=1638,
+  serialized_end=1932,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='GetLux',
+    full_name='WioLink.GetLux',
+    index=0,
+    containing_service=None,
+    input_type=_GETLUXREQUEST,
+    output_type=_GETLUXREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetTemperature',
+    full_name='WioLink.GetTemperature',
+    index=1,
+    containing_service=None,
+    input_type=_GETTEMPERATUREREQUEST,
+    output_type=_GETTEMPERATUREREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetSound',
+    full_name='WioLink.GetSound',
+    index=2,
+    containing_service=None,
+    input_type=_GETSOUNDREQUEST,
+    output_type=_GETSOUNDREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='SetLedStrip',
+    full_name='WioLink.SetLedStrip',
+    index=3,
+    containing_service=None,
+    input_type=_SETLEDSTRIPREQUEST,
+    output_type=_SETLEDSTRIPREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetButtonPressed',
+    full_name='WioLink.GetButtonPressed',
+    index=4,
+    containing_service=None,
+    input_type=_GETBUTTONPRESSEDREQUEST,
+    output_type=_GETBUTTONPRESSEDREPLY,
+    options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_WIOLINK)
+
+DESCRIPTOR.services_by_name['WioLink'] = _WIOLINK
+
+
+_PUSH = _descriptor.ServiceDescriptor(
+  name='Push',
+  full_name='Push',
+  file=DESCRIPTOR,
+  index=4,
+  options=None,
+  serialized_start=1935,
+  serialized_end=2069,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='Subscribe',
+    full_name='Push.Subscribe',
+    index=0,
+    containing_service=None,
+    input_type=_SUBSCRIBEREQUEST,
+    output_type=_SUBSCRIBEREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='StreamButtonPressed',
+    full_name='Push.StreamButtonPressed',
+    index=1,
+    containing_service=None,
+    input_type=_GETBUTTONPRESSEDREQUEST,
+    output_type=_GETBUTTONPRESSEDREPLY,
+    options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_PUSH)
+
+DESCRIPTOR.services_by_name['Push'] = _PUSH
 
-class FrontEndStub(object):
-  """http://www.grpc.io/docs/guides/concepts.html is good reference for #tags
-
-  #FrontEnd #Simple
-  The FrontEnd server is the endpoint that most client interactions
-  should use. These are public facing and used by servers in the outside
-  world.
-
-  Note: Currently there is no security in place so this should only be used
-  for localhost applications only be used behind a firewall.
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
-    """
-    self.GetLux = channel.unary_unary(
-        '/FrontEnd/GetLux',
-        request_serializer=GetLuxRequest.SerializeToString,
-        response_deserializer=GetLuxReply.FromString,
-        )
-    self.GetTemperature = channel.unary_unary(
-        '/FrontEnd/GetTemperature',
-        request_serializer=GetTemperatureRequest.SerializeToString,
-        response_deserializer=GetTemperatureReply.FromString,
-        )
-    self.GetSound = channel.unary_unary(
-        '/FrontEnd/GetSound',
-        request_serializer=GetSoundRequest.SerializeToString,
-        response_deserializer=GetSoundReply.FromString,
-        )
-    self.GetIrButtonPressed = channel.unary_unary(
-        '/FrontEnd/GetIrButtonPressed',
-        request_serializer=GetIrButtonPressedRequest.SerializeToString,
-        response_deserializer=GetIrButtonPressedReply.FromString,
-        )
-    self.GetSonar = channel.unary_unary(
-        '/FrontEnd/GetSonar',
-        request_serializer=GetSonarRequest.SerializeToString,
-        response_deserializer=GetSonarReply.FromString,
-        )
-    self.SetLedStrip = channel.unary_unary(
-        '/FrontEnd/SetLedStrip',
-        request_serializer=SetLedStripRequest.SerializeToString,
-        response_deserializer=SetLedStripReply.FromString,
-        )
-    self.GetButtonPressed = channel.unary_unary(
-        '/FrontEnd/GetButtonPressed',
-        request_serializer=GetButtonPressedRequest.SerializeToString,
-        response_deserializer=GetButtonPressedReply.FromString,
-        )
-    self.SendToRfBlaster = channel.unary_unary(
-        '/FrontEnd/SendToRfBlaster',
-        request_serializer=SendToRfBlasterRequest.SerializeToString,
-        response_deserializer=SendToRfBlasterReply.FromString,
-        )
-
-
-class FrontEndServicer(object):
-  """http://www.grpc.io/docs/guides/concepts.html is good reference for #tags
-
-  #FrontEnd #Simple
-  The FrontEnd server is the endpoint that most client interactions
-  should use. These are public facing and used by servers in the outside
-  world.
-
-  Note: Currently there is no security in place so this should only be used
-  for localhost applications only be used behind a firewall.
-  """
-
-  def GetLux(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def GetTemperature(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def GetSound(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def GetIrButtonPressed(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def GetSonar(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def SetLedStrip(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def GetButtonPressed(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def SendToRfBlaster(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-
-def add_FrontEndServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'GetLux': grpc.unary_unary_rpc_method_handler(
-          servicer.GetLux,
-          request_deserializer=GetLuxRequest.FromString,
-          response_serializer=GetLuxReply.SerializeToString,
-      ),
-      'GetTemperature': grpc.unary_unary_rpc_method_handler(
-          servicer.GetTemperature,
-          request_deserializer=GetTemperatureRequest.FromString,
-          response_serializer=GetTemperatureReply.SerializeToString,
-      ),
-      'GetSound': grpc.unary_unary_rpc_method_handler(
-          servicer.GetSound,
-          request_deserializer=GetSoundRequest.FromString,
-          response_serializer=GetSoundReply.SerializeToString,
-      ),
-      'GetIrButtonPressed': grpc.unary_unary_rpc_method_handler(
-          servicer.GetIrButtonPressed,
-          request_deserializer=GetIrButtonPressedRequest.FromString,
-          response_serializer=GetIrButtonPressedReply.SerializeToString,
-      ),
-      'GetSonar': grpc.unary_unary_rpc_method_handler(
-          servicer.GetSonar,
-          request_deserializer=GetSonarRequest.FromString,
-          response_serializer=GetSonarReply.SerializeToString,
-      ),
-      'SetLedStrip': grpc.unary_unary_rpc_method_handler(
-          servicer.SetLedStrip,
-          request_deserializer=SetLedStripRequest.FromString,
-          response_serializer=SetLedStripReply.SerializeToString,
-      ),
-      'GetButtonPressed': grpc.unary_unary_rpc_method_handler(
-          servicer.GetButtonPressed,
-          request_deserializer=GetButtonPressedRequest.FromString,
-          response_serializer=GetButtonPressedReply.SerializeToString,
-      ),
-      'SendToRfBlaster': grpc.unary_unary_rpc_method_handler(
-          servicer.SendToRfBlaster,
-          request_deserializer=SendToRfBlasterRequest.FromString,
-          response_serializer=SendToRfBlasterReply.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'FrontEnd', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
-
-
-class BetaFrontEndServicer(object):
-  """http://www.grpc.io/docs/guides/concepts.html is good reference for #tags
-
-  #FrontEnd #Simple
-  The FrontEnd server is the endpoint that most client interactions
-  should use. These are public facing and used by servers in the outside
-  world.
-
-  Note: Currently there is no security in place so this should only be used
-  for localhost applications only be used behind a firewall.
-  """
-  def GetLux(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def GetTemperature(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def GetSound(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def GetIrButtonPressed(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def GetSonar(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def SetLedStrip(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def GetButtonPressed(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def SendToRfBlaster(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-
-
-class BetaFrontEndStub(object):
-  """http://www.grpc.io/docs/guides/concepts.html is good reference for #tags
-
-  #FrontEnd #Simple
-  The FrontEnd server is the endpoint that most client interactions
-  should use. These are public facing and used by servers in the outside
-  world.
-
-  Note: Currently there is no security in place so this should only be used
-  for localhost applications only be used behind a firewall.
-  """
-  def GetLux(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  GetLux.future = None
-  def GetTemperature(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  GetTemperature.future = None
-  def GetSound(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  GetSound.future = None
-  def GetIrButtonPressed(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  GetIrButtonPressed.future = None
-  def GetSonar(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  GetSonar.future = None
-  def SetLedStrip(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  SetLedStrip.future = None
-  def GetButtonPressed(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  GetButtonPressed.future = None
-  def SendToRfBlaster(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  SendToRfBlaster.future = None
-
-
-def beta_create_FrontEnd_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
-  request_deserializers = {
-    ('FrontEnd', 'GetButtonPressed'): GetButtonPressedRequest.FromString,
-    ('FrontEnd', 'GetIrButtonPressed'): GetIrButtonPressedRequest.FromString,
-    ('FrontEnd', 'GetLux'): GetLuxRequest.FromString,
-    ('FrontEnd', 'GetSonar'): GetSonarRequest.FromString,
-    ('FrontEnd', 'GetSound'): GetSoundRequest.FromString,
-    ('FrontEnd', 'GetTemperature'): GetTemperatureRequest.FromString,
-    ('FrontEnd', 'SendToRfBlaster'): SendToRfBlasterRequest.FromString,
-    ('FrontEnd', 'SetLedStrip'): SetLedStripRequest.FromString,
-  }
-  response_serializers = {
-    ('FrontEnd', 'GetButtonPressed'): GetButtonPressedReply.SerializeToString,
-    ('FrontEnd', 'GetIrButtonPressed'): GetIrButtonPressedReply.SerializeToString,
-    ('FrontEnd', 'GetLux'): GetLuxReply.SerializeToString,
-    ('FrontEnd', 'GetSonar'): GetSonarReply.SerializeToString,
-    ('FrontEnd', 'GetSound'): GetSoundReply.SerializeToString,
-    ('FrontEnd', 'GetTemperature'): GetTemperatureReply.SerializeToString,
-    ('FrontEnd', 'SendToRfBlaster'): SendToRfBlasterReply.SerializeToString,
-    ('FrontEnd', 'SetLedStrip'): SetLedStripReply.SerializeToString,
-  }
-  method_implementations = {
-    ('FrontEnd', 'GetButtonPressed'): face_utilities.unary_unary_inline(servicer.GetButtonPressed),
-    ('FrontEnd', 'GetIrButtonPressed'): face_utilities.unary_unary_inline(servicer.GetIrButtonPressed),
-    ('FrontEnd', 'GetLux'): face_utilities.unary_unary_inline(servicer.GetLux),
-    ('FrontEnd', 'GetSonar'): face_utilities.unary_unary_inline(servicer.GetSonar),
-    ('FrontEnd', 'GetSound'): face_utilities.unary_unary_inline(servicer.GetSound),
-    ('FrontEnd', 'GetTemperature'): face_utilities.unary_unary_inline(servicer.GetTemperature),
-    ('FrontEnd', 'SendToRfBlaster'): face_utilities.unary_unary_inline(servicer.SendToRfBlaster),
-    ('FrontEnd', 'SetLedStrip'): face_utilities.unary_unary_inline(servicer.SetLedStrip),
-  }
-  server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
-  return beta_implementations.server(method_implementations, options=server_options)
-
-
-def beta_create_FrontEnd_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
-  request_serializers = {
-    ('FrontEnd', 'GetButtonPressed'): GetButtonPressedRequest.SerializeToString,
-    ('FrontEnd', 'GetIrButtonPressed'): GetIrButtonPressedRequest.SerializeToString,
-    ('FrontEnd', 'GetLux'): GetLuxRequest.SerializeToString,
-    ('FrontEnd', 'GetSonar'): GetSonarRequest.SerializeToString,
-    ('FrontEnd', 'GetSound'): GetSoundRequest.SerializeToString,
-    ('FrontEnd', 'GetTemperature'): GetTemperatureRequest.SerializeToString,
-    ('FrontEnd', 'SendToRfBlaster'): SendToRfBlasterRequest.SerializeToString,
-    ('FrontEnd', 'SetLedStrip'): SetLedStripRequest.SerializeToString,
-  }
-  response_deserializers = {
-    ('FrontEnd', 'GetButtonPressed'): GetButtonPressedReply.FromString,
-    ('FrontEnd', 'GetIrButtonPressed'): GetIrButtonPressedReply.FromString,
-    ('FrontEnd', 'GetLux'): GetLuxReply.FromString,
-    ('FrontEnd', 'GetSonar'): GetSonarReply.FromString,
-    ('FrontEnd', 'GetSound'): GetSoundReply.FromString,
-    ('FrontEnd', 'GetTemperature'): GetTemperatureReply.FromString,
-    ('FrontEnd', 'SendToRfBlaster'): SendToRfBlasterReply.FromString,
-    ('FrontEnd', 'SetLedStrip'): SetLedStripReply.FromString,
-  }
-  cardinalities = {
-    'GetButtonPressed': cardinality.Cardinality.UNARY_UNARY,
-    'GetIrButtonPressed': cardinality.Cardinality.UNARY_UNARY,
-    'GetLux': cardinality.Cardinality.UNARY_UNARY,
-    'GetSonar': cardinality.Cardinality.UNARY_UNARY,
-    'GetSound': cardinality.Cardinality.UNARY_UNARY,
-    'GetTemperature': cardinality.Cardinality.UNARY_UNARY,
-    'SendToRfBlaster': cardinality.Cardinality.UNARY_UNARY,
-    'SetLedStrip': cardinality.Cardinality.UNARY_UNARY,
-  }
-  stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
-  return beta_implementations.dynamic_stub(channel, 'FrontEnd', cardinalities, options=stub_options)
-
-
-class PushFrontEndStub(object):
-  """#FrontEnd #ServerStreaming
-  The FrontEnd server is the endpoint that most client interactions
-  should use. These are public facing and used by servers in the outside
-  world. This server is for streaming events.
-
-  Note: Currently there is no security in place so this should only be used
-  for localhost applications only be used behind a firewall.
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
-    """
-    self.Subscribe = channel.unary_unary(
-        '/PushFrontEnd/Subscribe',
-        request_serializer=SubscribeRequest.SerializeToString,
-        response_deserializer=SubscribeReply.FromString,
-        )
-    self.StreamButtonPressed = channel.unary_stream(
-        '/PushFrontEnd/StreamButtonPressed',
-        request_serializer=GetButtonPressedRequest.SerializeToString,
-        response_deserializer=GetButtonPressedReply.FromString,
-        )
-
-
-class PushFrontEndServicer(object):
-  """#FrontEnd #ServerStreaming
-  The FrontEnd server is the endpoint that most client interactions
-  should use. These are public facing and used by servers in the outside
-  world. This server is for streaming events.
-
-  Note: Currently there is no security in place so this should only be used
-  for localhost applications only be used behind a firewall.
-  """
-
-  def Subscribe(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def StreamButtonPressed(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-
-def add_PushFrontEndServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'Subscribe': grpc.unary_unary_rpc_method_handler(
-          servicer.Subscribe,
-          request_deserializer=SubscribeRequest.FromString,
-          response_serializer=SubscribeReply.SerializeToString,
-      ),
-      'StreamButtonPressed': grpc.unary_stream_rpc_method_handler(
-          servicer.StreamButtonPressed,
-          request_deserializer=GetButtonPressedRequest.FromString,
-          response_serializer=GetButtonPressedReply.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'PushFrontEnd', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
-
-
-class BetaPushFrontEndServicer(object):
-  """#FrontEnd #ServerStreaming
-  The FrontEnd server is the endpoint that most client interactions
-  should use. These are public facing and used by servers in the outside
-  world. This server is for streaming events.
-
-  Note: Currently there is no security in place so this should only be used
-  for localhost applications only be used behind a firewall.
-  """
-  def Subscribe(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def StreamButtonPressed(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-
-
-class BetaPushFrontEndStub(object):
-  """#FrontEnd #ServerStreaming
-  The FrontEnd server is the endpoint that most client interactions
-  should use. These are public facing and used by servers in the outside
-  world. This server is for streaming events.
-
-  Note: Currently there is no security in place so this should only be used
-  for localhost applications only be used behind a firewall.
-  """
-  def Subscribe(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  Subscribe.future = None
-  def StreamButtonPressed(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-
-
-def beta_create_PushFrontEnd_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
-  request_deserializers = {
-    ('PushFrontEnd', 'StreamButtonPressed'): GetButtonPressedRequest.FromString,
-    ('PushFrontEnd', 'Subscribe'): SubscribeRequest.FromString,
-  }
-  response_serializers = {
-    ('PushFrontEnd', 'StreamButtonPressed'): GetButtonPressedReply.SerializeToString,
-    ('PushFrontEnd', 'Subscribe'): SubscribeReply.SerializeToString,
-  }
-  method_implementations = {
-    ('PushFrontEnd', 'StreamButtonPressed'): face_utilities.unary_stream_inline(servicer.StreamButtonPressed),
-    ('PushFrontEnd', 'Subscribe'): face_utilities.unary_unary_inline(servicer.Subscribe),
-  }
-  server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
-  return beta_implementations.server(method_implementations, options=server_options)
-
-
-def beta_create_PushFrontEnd_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
-  request_serializers = {
-    ('PushFrontEnd', 'StreamButtonPressed'): GetButtonPressedRequest.SerializeToString,
-    ('PushFrontEnd', 'Subscribe'): SubscribeRequest.SerializeToString,
-  }
-  response_deserializers = {
-    ('PushFrontEnd', 'StreamButtonPressed'): GetButtonPressedReply.FromString,
-    ('PushFrontEnd', 'Subscribe'): SubscribeReply.FromString,
-  }
-  cardinalities = {
-    'StreamButtonPressed': cardinality.Cardinality.UNARY_STREAM,
-    'Subscribe': cardinality.Cardinality.UNARY_UNARY,
-  }
-  stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
-  return beta_implementations.dynamic_stub(channel, 'PushFrontEnd', cardinalities, options=stub_options)
-
-
-class ArduinoStub(object):
-  """#Backend #Simple
-  Arduino server handles interactions between Arduino brand devices & other
-  servers. (New to Arduino: https://www.arduino.cc/en/Guide/Introduction)
-
-  Note: Do not have clients depend on this it should be behind a FrontEnd.
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
-    """
-    self.GetIrButtonPressed = channel.unary_unary(
-        '/Arduino/GetIrButtonPressed',
-        request_serializer=GetIrButtonPressedRequest.SerializeToString,
-        response_deserializer=GetIrButtonPressedReply.FromString,
-        )
-    self.GetSonar = channel.unary_unary(
-        '/Arduino/GetSonar',
-        request_serializer=GetSonarRequest.SerializeToString,
-        response_deserializer=GetSonarReply.FromString,
-        )
-    self.SendToRfBlaster = channel.unary_unary(
-        '/Arduino/SendToRfBlaster',
-        request_serializer=SendToRfBlasterRequest.SerializeToString,
-        response_deserializer=SendToRfBlasterReply.FromString,
-        )
-
-
-class ArduinoServicer(object):
-  """#Backend #Simple
-  Arduino server handles interactions between Arduino brand devices & other
-  servers. (New to Arduino: https://www.arduino.cc/en/Guide/Introduction)
-
-  Note: Do not have clients depend on this it should be behind a FrontEnd.
-  """
-
-  def GetIrButtonPressed(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def GetSonar(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def SendToRfBlaster(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-
-def add_ArduinoServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'GetIrButtonPressed': grpc.unary_unary_rpc_method_handler(
-          servicer.GetIrButtonPressed,
-          request_deserializer=GetIrButtonPressedRequest.FromString,
-          response_serializer=GetIrButtonPressedReply.SerializeToString,
-      ),
-      'GetSonar': grpc.unary_unary_rpc_method_handler(
-          servicer.GetSonar,
-          request_deserializer=GetSonarRequest.FromString,
-          response_serializer=GetSonarReply.SerializeToString,
-      ),
-      'SendToRfBlaster': grpc.unary_unary_rpc_method_handler(
-          servicer.SendToRfBlaster,
-          request_deserializer=SendToRfBlasterRequest.FromString,
-          response_serializer=SendToRfBlasterReply.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'Arduino', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
-
-
-class BetaArduinoServicer(object):
-  """#Backend #Simple
-  Arduino server handles interactions between Arduino brand devices & other
-  servers. (New to Arduino: https://www.arduino.cc/en/Guide/Introduction)
-
-  Note: Do not have clients depend on this it should be behind a FrontEnd.
-  """
-  def GetIrButtonPressed(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def GetSonar(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def SendToRfBlaster(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-
-
-class BetaArduinoStub(object):
-  """#Backend #Simple
-  Arduino server handles interactions between Arduino brand devices & other
-  servers. (New to Arduino: https://www.arduino.cc/en/Guide/Introduction)
-
-  Note: Do not have clients depend on this it should be behind a FrontEnd.
-  """
-  def GetIrButtonPressed(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  GetIrButtonPressed.future = None
-  def GetSonar(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  GetSonar.future = None
-  def SendToRfBlaster(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  SendToRfBlaster.future = None
-
-
-def beta_create_Arduino_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
-  request_deserializers = {
-    ('Arduino', 'GetIrButtonPressed'): GetIrButtonPressedRequest.FromString,
-    ('Arduino', 'GetSonar'): GetSonarRequest.FromString,
-    ('Arduino', 'SendToRfBlaster'): SendToRfBlasterRequest.FromString,
-  }
-  response_serializers = {
-    ('Arduino', 'GetIrButtonPressed'): GetIrButtonPressedReply.SerializeToString,
-    ('Arduino', 'GetSonar'): GetSonarReply.SerializeToString,
-    ('Arduino', 'SendToRfBlaster'): SendToRfBlasterReply.SerializeToString,
-  }
-  method_implementations = {
-    ('Arduino', 'GetIrButtonPressed'): face_utilities.unary_unary_inline(servicer.GetIrButtonPressed),
-    ('Arduino', 'GetSonar'): face_utilities.unary_unary_inline(servicer.GetSonar),
-    ('Arduino', 'SendToRfBlaster'): face_utilities.unary_unary_inline(servicer.SendToRfBlaster),
-  }
-  server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
-  return beta_implementations.server(method_implementations, options=server_options)
-
-
-def beta_create_Arduino_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
-  request_serializers = {
-    ('Arduino', 'GetIrButtonPressed'): GetIrButtonPressedRequest.SerializeToString,
-    ('Arduino', 'GetSonar'): GetSonarRequest.SerializeToString,
-    ('Arduino', 'SendToRfBlaster'): SendToRfBlasterRequest.SerializeToString,
-  }
-  response_deserializers = {
-    ('Arduino', 'GetIrButtonPressed'): GetIrButtonPressedReply.FromString,
-    ('Arduino', 'GetSonar'): GetSonarReply.FromString,
-    ('Arduino', 'SendToRfBlaster'): SendToRfBlasterReply.FromString,
-  }
-  cardinalities = {
-    'GetIrButtonPressed': cardinality.Cardinality.UNARY_UNARY,
-    'GetSonar': cardinality.Cardinality.UNARY_UNARY,
-    'SendToRfBlaster': cardinality.Cardinality.UNARY_UNARY,
-  }
-  stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
-  return beta_implementations.dynamic_stub(channel, 'Arduino', cardinalities, options=stub_options)
-
-
-class WioLinkStub(object):
-  """#Backend #Simple
-  WioLink server handles interactions between Wio Link brand devices & other
-  servers. (New to Wio Link: http://wiki.seeed.cc/Wio_Link/)
-
-  Note: Do not have clients depend on this it should be behind a FrontEnd.
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
-    """
-    self.GetLux = channel.unary_unary(
-        '/WioLink/GetLux',
-        request_serializer=GetLuxRequest.SerializeToString,
-        response_deserializer=GetLuxReply.FromString,
-        )
-    self.GetTemperature = channel.unary_unary(
-        '/WioLink/GetTemperature',
-        request_serializer=GetTemperatureRequest.SerializeToString,
-        response_deserializer=GetTemperatureReply.FromString,
-        )
-    self.GetSound = channel.unary_unary(
-        '/WioLink/GetSound',
-        request_serializer=GetSoundRequest.SerializeToString,
-        response_deserializer=GetSoundReply.FromString,
-        )
-    self.SetLedStrip = channel.unary_unary(
-        '/WioLink/SetLedStrip',
-        request_serializer=SetLedStripRequest.SerializeToString,
-        response_deserializer=SetLedStripReply.FromString,
-        )
-    self.GetButtonPressed = channel.unary_unary(
-        '/WioLink/GetButtonPressed',
-        request_serializer=GetButtonPressedRequest.SerializeToString,
-        response_deserializer=GetButtonPressedReply.FromString,
-        )
-
-
-class WioLinkServicer(object):
-  """#Backend #Simple
-  WioLink server handles interactions between Wio Link brand devices & other
-  servers. (New to Wio Link: http://wiki.seeed.cc/Wio_Link/)
-
-  Note: Do not have clients depend on this it should be behind a FrontEnd.
-  """
-
-  def GetLux(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def GetTemperature(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def GetSound(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def SetLedStrip(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def GetButtonPressed(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-
-def add_WioLinkServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'GetLux': grpc.unary_unary_rpc_method_handler(
-          servicer.GetLux,
-          request_deserializer=GetLuxRequest.FromString,
-          response_serializer=GetLuxReply.SerializeToString,
-      ),
-      'GetTemperature': grpc.unary_unary_rpc_method_handler(
-          servicer.GetTemperature,
-          request_deserializer=GetTemperatureRequest.FromString,
-          response_serializer=GetTemperatureReply.SerializeToString,
-      ),
-      'GetSound': grpc.unary_unary_rpc_method_handler(
-          servicer.GetSound,
-          request_deserializer=GetSoundRequest.FromString,
-          response_serializer=GetSoundReply.SerializeToString,
-      ),
-      'SetLedStrip': grpc.unary_unary_rpc_method_handler(
-          servicer.SetLedStrip,
-          request_deserializer=SetLedStripRequest.FromString,
-          response_serializer=SetLedStripReply.SerializeToString,
-      ),
-      'GetButtonPressed': grpc.unary_unary_rpc_method_handler(
-          servicer.GetButtonPressed,
-          request_deserializer=GetButtonPressedRequest.FromString,
-          response_serializer=GetButtonPressedReply.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'WioLink', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
-
-
-class BetaWioLinkServicer(object):
-  """#Backend #Simple
-  WioLink server handles interactions between Wio Link brand devices & other
-  servers. (New to Wio Link: http://wiki.seeed.cc/Wio_Link/)
-
-  Note: Do not have clients depend on this it should be behind a FrontEnd.
-  """
-  def GetLux(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def GetTemperature(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def GetSound(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def SetLedStrip(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def GetButtonPressed(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-
-
-class BetaWioLinkStub(object):
-  """#Backend #Simple
-  WioLink server handles interactions between Wio Link brand devices & other
-  servers. (New to Wio Link: http://wiki.seeed.cc/Wio_Link/)
-
-  Note: Do not have clients depend on this it should be behind a FrontEnd.
-  """
-  def GetLux(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  GetLux.future = None
-  def GetTemperature(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  GetTemperature.future = None
-  def GetSound(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  GetSound.future = None
-  def SetLedStrip(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  SetLedStrip.future = None
-  def GetButtonPressed(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  GetButtonPressed.future = None
-
-
-def beta_create_WioLink_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
-  request_deserializers = {
-    ('WioLink', 'GetButtonPressed'): GetButtonPressedRequest.FromString,
-    ('WioLink', 'GetLux'): GetLuxRequest.FromString,
-    ('WioLink', 'GetSound'): GetSoundRequest.FromString,
-    ('WioLink', 'GetTemperature'): GetTemperatureRequest.FromString,
-    ('WioLink', 'SetLedStrip'): SetLedStripRequest.FromString,
-  }
-  response_serializers = {
-    ('WioLink', 'GetButtonPressed'): GetButtonPressedReply.SerializeToString,
-    ('WioLink', 'GetLux'): GetLuxReply.SerializeToString,
-    ('WioLink', 'GetSound'): GetSoundReply.SerializeToString,
-    ('WioLink', 'GetTemperature'): GetTemperatureReply.SerializeToString,
-    ('WioLink', 'SetLedStrip'): SetLedStripReply.SerializeToString,
-  }
-  method_implementations = {
-    ('WioLink', 'GetButtonPressed'): face_utilities.unary_unary_inline(servicer.GetButtonPressed),
-    ('WioLink', 'GetLux'): face_utilities.unary_unary_inline(servicer.GetLux),
-    ('WioLink', 'GetSound'): face_utilities.unary_unary_inline(servicer.GetSound),
-    ('WioLink', 'GetTemperature'): face_utilities.unary_unary_inline(servicer.GetTemperature),
-    ('WioLink', 'SetLedStrip'): face_utilities.unary_unary_inline(servicer.SetLedStrip),
-  }
-  server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
-  return beta_implementations.server(method_implementations, options=server_options)
-
-
-def beta_create_WioLink_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
-  request_serializers = {
-    ('WioLink', 'GetButtonPressed'): GetButtonPressedRequest.SerializeToString,
-    ('WioLink', 'GetLux'): GetLuxRequest.SerializeToString,
-    ('WioLink', 'GetSound'): GetSoundRequest.SerializeToString,
-    ('WioLink', 'GetTemperature'): GetTemperatureRequest.SerializeToString,
-    ('WioLink', 'SetLedStrip'): SetLedStripRequest.SerializeToString,
-  }
-  response_deserializers = {
-    ('WioLink', 'GetButtonPressed'): GetButtonPressedReply.FromString,
-    ('WioLink', 'GetLux'): GetLuxReply.FromString,
-    ('WioLink', 'GetSound'): GetSoundReply.FromString,
-    ('WioLink', 'GetTemperature'): GetTemperatureReply.FromString,
-    ('WioLink', 'SetLedStrip'): SetLedStripReply.FromString,
-  }
-  cardinalities = {
-    'GetButtonPressed': cardinality.Cardinality.UNARY_UNARY,
-    'GetLux': cardinality.Cardinality.UNARY_UNARY,
-    'GetSound': cardinality.Cardinality.UNARY_UNARY,
-    'GetTemperature': cardinality.Cardinality.UNARY_UNARY,
-    'SetLedStrip': cardinality.Cardinality.UNARY_UNARY,
-  }
-  stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
-  return beta_implementations.dynamic_stub(channel, 'WioLink', cardinalities, options=stub_options)
-
-
-class PushStub(object):
-  """#ServerStreaming #Backend
-  Push server pushes data when a sensor event occurs for the client to react
-  to.
-  """
-
-  def __init__(self, channel):
-    """Constructor.
-
-    Args:
-      channel: A grpc.Channel.
-    """
-    self.Subscribe = channel.unary_unary(
-        '/Push/Subscribe',
-        request_serializer=SubscribeRequest.SerializeToString,
-        response_deserializer=SubscribeReply.FromString,
-        )
-    self.StreamButtonPressed = channel.unary_stream(
-        '/Push/StreamButtonPressed',
-        request_serializer=GetButtonPressedRequest.SerializeToString,
-        response_deserializer=GetButtonPressedReply.FromString,
-        )
-
-
-class PushServicer(object):
-  """#ServerStreaming #Backend
-  Push server pushes data when a sensor event occurs for the client to react
-  to.
-  """
-
-  def Subscribe(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def StreamButtonPressed(self, request, context):
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-
-def add_PushServicer_to_server(servicer, server):
-  rpc_method_handlers = {
-      'Subscribe': grpc.unary_unary_rpc_method_handler(
-          servicer.Subscribe,
-          request_deserializer=SubscribeRequest.FromString,
-          response_serializer=SubscribeReply.SerializeToString,
-      ),
-      'StreamButtonPressed': grpc.unary_stream_rpc_method_handler(
-          servicer.StreamButtonPressed,
-          request_deserializer=GetButtonPressedRequest.FromString,
-          response_serializer=GetButtonPressedReply.SerializeToString,
-      ),
-  }
-  generic_handler = grpc.method_handlers_generic_handler(
-      'Push', rpc_method_handlers)
-  server.add_generic_rpc_handlers((generic_handler,))
-
-
-class BetaPushServicer(object):
-  """#ServerStreaming #Backend
-  Push server pushes data when a sensor event occurs for the client to react
-  to.
-  """
-  def Subscribe(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-  def StreamButtonPressed(self, request, context):
-    context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-
-
-class BetaPushStub(object):
-  """#ServerStreaming #Backend
-  Push server pushes data when a sensor event occurs for the client to react
-  to.
-  """
-  def Subscribe(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-  Subscribe.future = None
-  def StreamButtonPressed(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-    raise NotImplementedError()
-
-
-def beta_create_Push_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
-  request_deserializers = {
-    ('Push', 'StreamButtonPressed'): GetButtonPressedRequest.FromString,
-    ('Push', 'Subscribe'): SubscribeRequest.FromString,
-  }
-  response_serializers = {
-    ('Push', 'StreamButtonPressed'): GetButtonPressedReply.SerializeToString,
-    ('Push', 'Subscribe'): SubscribeReply.SerializeToString,
-  }
-  method_implementations = {
-    ('Push', 'StreamButtonPressed'): face_utilities.unary_stream_inline(servicer.StreamButtonPressed),
-    ('Push', 'Subscribe'): face_utilities.unary_unary_inline(servicer.Subscribe),
-  }
-  server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
-  return beta_implementations.server(method_implementations, options=server_options)
-
-
-def beta_create_Push_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
-  request_serializers = {
-    ('Push', 'StreamButtonPressed'): GetButtonPressedRequest.SerializeToString,
-    ('Push', 'Subscribe'): SubscribeRequest.SerializeToString,
-  }
-  response_deserializers = {
-    ('Push', 'StreamButtonPressed'): GetButtonPressedReply.FromString,
-    ('Push', 'Subscribe'): SubscribeReply.FromString,
-  }
-  cardinalities = {
-    'StreamButtonPressed': cardinality.Cardinality.UNARY_STREAM,
-    'Subscribe': cardinality.Cardinality.UNARY_UNARY,
-  }
-  stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
-  return beta_implementations.dynamic_stub(channel, 'Push', cardinalities, options=stub_options)
 # @@protoc_insertion_point(module_scope)
