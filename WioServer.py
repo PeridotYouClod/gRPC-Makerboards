@@ -4,11 +4,12 @@ import grpc
 
 import ProtoConfig
 import generated.proto_out.sensors_pb2 as sensors_pb2
+import generated.proto_out.sensors_pb2_grpc as sensors_grpc
 from pylibs.Sensor import WioSensorReader
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
-class WioLink(sensors_pb2.WioLinkServicer):
+class WioLink(sensors_grpc.WioLinkServicer):
   def __init__(self, protoConfig):
     super().__init__()
 
@@ -55,7 +56,7 @@ class WioLink(sensors_pb2.WioLinkServicer):
 def serve():
   protoConfig = ProtoConfig.getConfig()
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  sensors_pb2.add_WioLinkServicer_to_server(WioLink(protoConfig), server)
+  sensors_grpc.add_WioLinkServicer_to_server(WioLink(protoConfig), server)
   port = protoConfig.ports.wioPort
   server.add_insecure_port('[::]:%s' % port)
   server.start()

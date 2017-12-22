@@ -4,11 +4,12 @@ import time
 
 import ProtoConfig
 import generated.proto_out.sensors_pb2 as sensors_pb2
+import generated.proto_out.sensors_pb2_grpc as sensors_grpc
 from pylibs.Sensor import ArduinoSensorReader
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
-class Arduino(sensors_pb2.ArduinoServicer):
+class Arduino(sensors_grpc.ArduinoServicer):
   def __init__(self, arduino):
     super().__init__()
     self.sensorReader = ArduinoSensorReader(arduino)
@@ -34,7 +35,7 @@ def serve():
   arduino = protoConfig.arduinos[0]
 
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  sensors_pb2.add_ArduinoServicer_to_server(Arduino(arduino), server)
+  sensors_grpc.add_ArduinoServicer_to_server(Arduino(arduino), server)
   port = protoConfig.ports.arduinoPort
   server.add_insecure_port('[::]:%s' % port)
   server.start()
