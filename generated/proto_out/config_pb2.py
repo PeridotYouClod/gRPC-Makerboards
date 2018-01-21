@@ -21,6 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_pb=_b('\n\x0c\x63onfig.proto\"\xbc\x01\n\x0cServerConfig\x12-\n\x08wioLinks\x18\x01 \x03(\x0b\x32\x1b.ServerConfig.WioLinksEntry\x12 \n\x08\x61rduinos\x18\x02 \x03(\x0b\x32\x0e.ArduinoConfig\x12\x1a\n\x05ports\x18\x03 \x01(\x0b\x32\x0b.PortConfig\x1a?\n\rWioLinksEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1d\n\x05value\x18\x02 \x01(\x0b\x32\x0e.WioLinkConfig:\x02\x38\x01\"\xa1\x01\n\rWioLinkConfig\x12\x0f\n\x07rootUrl\x18\x01 \x01(\t\x12\x13\n\x0b\x61\x63\x63\x65ssToken\x18\x02 \x01(\t\x12,\n\x07sensors\x18\x03 \x03(\x0b\x32\x1b.WioLinkConfig.SensorsEntry\x1a<\n\x0cSensorsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1b\n\x05value\x18\x02 \x01(\x0b\x32\x0c.GroveSensor:\x02\x38\x01\" \n\x0bGroveSensor\x12\x11\n\tapiMethod\x18\x01 \x01(\t\"2\n\rArduinoConfig\x12\x0f\n\x07\x63omPort\x18\x01 \x01(\t\x12\x10\n\x08\x62\x61udRate\x18\x02 \x01(\x05\"\x85\x01\n\nPortConfig\x12\x14\n\x0c\x66rontEndPort\x18\x01 \x01(\x05\x12\x13\n\x0b\x61rduinoPort\x18\x02 \x01(\x05\x12\x0f\n\x07wioPort\x18\x03 \x01(\x05\x12\x18\n\x10pushFrontEndPort\x18\x04 \x01(\x05\x12\x10\n\x08pushPort\x18\x05 \x01(\x05\x12\x0f\n\x07\x64\x61oPort\x18\x06 \x01(\x05\x62\x06proto3')
 )
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 
@@ -38,14 +39,14 @@ _SERVERCONFIG_WIOLINKSENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='value', full_name='ServerConfig.WioLinksEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
   ],
   extensions=[
   ],
@@ -75,21 +76,21 @@ _SERVERCONFIG = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='arduinos', full_name='ServerConfig.arduinos', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='ports', full_name='ServerConfig.ports', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
   ],
   extensions=[
   ],
@@ -120,14 +121,14 @@ _WIOLINKCONFIG_SENSORSENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='value', full_name='WioLinkConfig.SensorsEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
   ],
   extensions=[
   ],
@@ -157,21 +158,21 @@ _WIOLINKCONFIG = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='accessToken', full_name='WioLinkConfig.accessToken', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='sensors', full_name='WioLinkConfig.sensors', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
   ],
   extensions=[
   ],
@@ -202,7 +203,7 @@ _GROVESENSOR = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
   ],
   extensions=[
   ],
@@ -233,14 +234,14 @@ _ARDUINOCONFIG = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='baudRate', full_name='ArduinoConfig.baudRate', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
   ],
   extensions=[
   ],
@@ -271,42 +272,42 @@ _PORTCONFIG = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='arduinoPort', full_name='PortConfig.arduinoPort', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='wioPort', full_name='PortConfig.wioPort', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='pushFrontEndPort', full_name='PortConfig.pushFrontEndPort', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='pushPort', full_name='PortConfig.pushPort', index=4,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='daoPort', full_name='PortConfig.daoPort', index=5,
       number=6, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      options=None),
   ],
   extensions=[
   ],
@@ -336,7 +337,6 @@ DESCRIPTOR.message_types_by_name['WioLinkConfig'] = _WIOLINKCONFIG
 DESCRIPTOR.message_types_by_name['GroveSensor'] = _GROVESENSOR
 DESCRIPTOR.message_types_by_name['ArduinoConfig'] = _ARDUINOCONFIG
 DESCRIPTOR.message_types_by_name['PortConfig'] = _PORTCONFIG
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ServerConfig = _reflection.GeneratedProtocolMessageType('ServerConfig', (_message.Message,), dict(
 
@@ -394,4 +394,14 @@ _SERVERCONFIG_WIOLINKSENTRY.has_options = True
 _SERVERCONFIG_WIOLINKSENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
 _WIOLINKCONFIG_SENSORSENTRY.has_options = True
 _WIOLINKCONFIG_SENSORSENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
+try:
+  # THESE ELEMENTS WILL BE DEPRECATED.
+  # Please use the generated *_pb2_grpc.py files instead.
+  import grpc
+  from grpc.framework.common import cardinality
+  from grpc.framework.interfaces.face import utilities as face_utilities
+  from grpc.beta import implementations as beta_implementations
+  from grpc.beta import interfaces as beta_interfaces
+except ImportError:
+  pass
 # @@protoc_insertion_point(module_scope)
