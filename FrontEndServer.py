@@ -4,16 +4,17 @@ import time
 
 import ProtoConfig
 import generated.proto_out.sensors_pb2 as sensors_pb2
+import generated.proto_out.sensors_pb2_grpc as sensors_grpc
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
-class FrontEnd(sensors_pb2.FrontEndServicer):
-  def __init__(self):
+class FrontEnd(sensors_grpc.FrontEndServicer):
+  def __init__(self, protoConfig):
     super().__init__()
-    wioChannel = grpc.insecure_channel('localhost:50051')
-    self.wioStub = sensors_pb2.WioLinkStub(wioChannel)
-    arduinoChannel = grpc.insecure_channel('localhost:50052')
-    self.arduinoStub = sensors_pb2.ArduinoStub(arduinoChannel)
+    wioChannel = grpc.insecure_channel('localhost:%s' % protoConfig.ports.wioPort)
+    self.wioStub = sensors_grpc.WioLinkStub(wioChannel)
+    arduinoChannel = grpc.insecure_channel('localhost:%s' % protoConfig.ports.arduinoPort)
+    self.arduinoStub = sensors_grpc.ArduinoStub(arduinoChannel)
 
   def GetIrButtonPressed(self, request, context):
     print('GetIrButtonPressed')
@@ -44,10 +45,20 @@ class FrontEnd(sensors_pb2.FrontEndServicer):
     print('GetButtonPressed')
     return self.wioStub.GetButtonPressed(sensors_pb2.GetButtonPressedRequest())
 
+  def SendToRfBlaster(self, req, context):
+    print('SendToRfBlaster')
+    blasterRequest = sensors_pb2.SendToRfBlasterRequest(
+      button=req.button,
+      on=req.on
+    )
+    print("blasterRequest: %s" % blasterRequest)
+    return self.arduinoStub.SendToRfBlaster(blasterRequest)
+
+
 def serve():
   protoConfig = ProtoConfig.getConfig()
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  sensors_pb2.add_FrontEndServicer_to_server(FrontEnd(), server)
+  sensors_grpc.add_FrontEndServicer_to_server(FrontEnd(protoConfig), server)
   port = protoConfig.ports.frontEndPort
   server.add_insecure_port('[::]:%s' % port)
   server.start()

@@ -18,6 +18,7 @@ service FrontEnd {
   rpc GetSonar (GetSonarRequest) returns (GetSonarReply) {}
   rpc SetLedStrip (SetLedStripRequest) returns (SetLedStripReply) {}
   rpc GetButtonPressed (GetButtonPressedRequest) returns (GetButtonPressedReply) {}
+  rpc SendToRfBlaster(SendToRfBlasterRequest) returns (SendToRfBlasterReply) {}
 }
 
 /*  #FrontEnd #ServerStreaming
@@ -42,6 +43,7 @@ service PushFrontEnd {
 service Arduino {
   rpc GetIrButtonPressed (GetIrButtonPressedRequest) returns (GetIrButtonPressedReply) {}
   rpc GetSonar (GetSonarRequest) returns (GetSonarReply) {}
+  rpc SendToRfBlaster(SendToRfBlasterRequest) returns (SendToRfBlasterReply) {}
 }
 
 /*  #Backend #Simple
@@ -127,3 +129,12 @@ message SetLedStripRequest {
 }
 
 message SetLedStripReply {}
+
+message SendToRfBlasterRequest {
+  int32 button = 1; // button to interpret
+  bool on = 2; // on or off
+}
+
+message SendToRfBlasterReply{
+  bool success = 1;
+}

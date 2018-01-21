@@ -4,11 +4,12 @@ import time
 
 import ProtoConfig
 import generated.proto_out.dao_pb2 as dao_pb2
+import generated.proto_out.dao_pb2_grpc as dao_grpc
 from pylibs.Database import Mongo
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
-class Dao(dao_pb2.DaoServicer):
+class Dao(dao_grpc.DaoServicer):
   def __init__(self, sensor_db):
     super().__init__()
     self.sensor_db = sensor_db
@@ -47,7 +48,7 @@ def serve():
   sensor_db = Mongo()
   sensor_db.GetClient() # initalize the Db
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  dao_pb2.add_DaoServicer_to_server(Dao(sensor_db), server)
+  dao_grpc.add_DaoServicer_to_server(Dao(sensor_db), server)
   port = protoConfig.ports.daoPort
   server.add_insecure_port('[::]:%s' % port)
   server.start()

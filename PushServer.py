@@ -5,10 +5,11 @@ import websocket
 
 import ProtoConfig
 import generated.proto_out.sensors_pb2 as sensors_pb2
+import generated.proto_out.sensors_pb2_grpc as sensors_grpc
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
-class Push(sensors_pb2.PushServicer):
+class Push(sensors_grpc.PushServicer):
   def __init__(self, accessToken):
     super().__init__()
     self.accessToken = accessToken
@@ -49,7 +50,7 @@ def serve():
   protoConfig = ProtoConfig.getConfig()
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
   pushServer = Push(accessToken=protoConfig.wioLinks['havok'].accessToken)
-  sensors_pb2.add_PushServicer_to_server(pushServer, server)
+  sensors_grpc.add_PushServicer_to_server(pushServer, server)
   port = protoConfig.ports.pushPort
   server.add_insecure_port('[::]:%s' % port)
   server.start()
