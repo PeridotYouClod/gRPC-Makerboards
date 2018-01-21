@@ -41,6 +41,6 @@ def getConfig():
       pushPort=50004,
       daoPort=50005,
     )
-    return config_pb2.ServerConfig(
-      wioLinks=wioLinks, arduinos=arduinos, ports=ports,
-    )
+  return config_pb2.ServerConfig(
+    wioLinks=wioLinks, arduinos=arduinos, ports=ports,
+  )
