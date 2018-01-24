@@ -1,12 +1,13 @@
 import grpc
 import time
+import generated.proto_out.sensors_pb2_grpc as sensors_grpc
 import generated.proto_out.sensors_pb2 as sensors_pb2
 import ProtoConfig
 
 def run():
   protoConfig = ProtoConfig.getConfig()
   channel = grpc.insecure_channel('localhost:%s' % protoConfig.ports.pushFrontEndPort)
-  stub = sensors_pb2.PushFrontEndStub(channel)
+  stub = sensors_grpc.PushFrontEndStub(channel)
 
   subscribeRequest = sensors_pb2.SubscribeRequest(
     status=sensors_pb2.SubscribeRequest.SUBSCRIBE,
