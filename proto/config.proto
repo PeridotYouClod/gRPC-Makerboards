@@ -8,18 +8,26 @@ message ServerConfig {
 }
 
 message WioLinkConfig {
-	string rootUrl = 1;
-	string accessToken = 2;
-	map<string, GroveSensor> sensors = 3;
+  string rootUrl = 1;
+  string accessToken = 2;
+  map<string, GroveSensor> sensors = 3;
 }
 
 message GroveSensor {
-	string apiMethod = 1;
+  string apiMethod = 1;
 }
 
 message ArduinoConfig {
-	string comPort = 1;
-	int32 baudRate = 2;
+  string comPort = 1;
+  int32 baudRate = 2;
+  repeated ArduinoFunction functions = 3;
+}
+
+enum ArduinoFunction {
+  UNKNOWN = 0;
+  GET_IR_BUTTON_PRESSED = 1;
+  GET_SONAR = 2;
+  SEND_RF_REMOTE = 3;
 }
 
 message PortConfig {

@@ -34,8 +34,9 @@ def getConfig():
   }
   arduinos = [config_pb2.ArduinoConfig(
     comPort=comPort,
-    baudRate=9800),
-    ]
+    baudRate=9800,
+    functions=[config_pb2.SEND_RF_REMOTE, config_pb2.GET_IR_BUTTON_PRESSED]),
+  ]
   # Choose a port for each server. The important part is that none of these are
   # the same number. Feel free to change these at will.
   ports = config_pb2.PortConfig(
