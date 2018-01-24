@@ -21,7 +21,6 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_pb=_b('\n\tdao.proto\"H\n\rSelectRequest\x12\r\n\x05table\x18\x01 \x01(\t\x12\r\n\x05limit\x18\x02 \x01(\x05\x12\x19\n\x04\x63ols\x18\x03 \x03(\x0b\x32\x0b.RequestCol\"\x1a\n\nRequestCol\x12\x0c\n\x04name\x18\x01 \x01(\t\"+\n\x0bSelectReply\x12\x1c\n\x07\x63olumns\x18\x01 \x03(\x0b\x32\x0b.DataColumn\"m\n\nDataColumn\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tintValues\x18\x02 \x03(\x05\x12\x14\n\x0c\x64oubleValues\x18\x03 \x03(\x01\x12\x12\n\nboolValues\x18\x04 \x03(\x08\x12\x14\n\x0cstringValues\x18\x05 \x03(\t2/\n\x03\x44\x61o\x12(\n\x06Select\x12\x0e.SelectRequest\x1a\x0c.SelectReply\"\x00\x62\x06proto3')
 )
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 
@@ -39,21 +38,21 @@ _SELECTREQUEST = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='limit', full_name='SelectRequest.limit', index=1,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='cols', full_name='SelectRequest.cols', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -84,7 +83,7 @@ _REQUESTCOL = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -115,7 +114,7 @@ _SELECTREPLY = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -146,35 +145,35 @@ _DATACOLUMN = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='intValues', full_name='DataColumn.intValues', index=1,
       number=2, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='doubleValues', full_name='DataColumn.doubleValues', index=2,
       number=3, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='boolValues', full_name='DataColumn.boolValues', index=3,
       number=4, type=8, cpp_type=7, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='stringValues', full_name='DataColumn.stringValues', index=4,
       number=5, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -197,6 +196,7 @@ DESCRIPTOR.message_types_by_name['SelectRequest'] = _SELECTREQUEST
 DESCRIPTOR.message_types_by_name['RequestCol'] = _REQUESTCOL
 DESCRIPTOR.message_types_by_name['SelectReply'] = _SELECTREPLY
 DESCRIPTOR.message_types_by_name['DataColumn'] = _DATACOLUMN
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 SelectRequest = _reflection.GeneratedProtocolMessageType('SelectRequest', (_message.Message,), dict(
   DESCRIPTOR = _SELECTREQUEST,
@@ -227,133 +227,28 @@ DataColumn = _reflection.GeneratedProtocolMessageType('DataColumn', (_message.Me
 _sym_db.RegisterMessage(DataColumn)
 
 
-try:
-  # THESE ELEMENTS WILL BE DEPRECATED.
-  # Please use the generated *_pb2_grpc.py files instead.
-  import grpc
-  from grpc.framework.common import cardinality
-  from grpc.framework.interfaces.face import utilities as face_utilities
-  from grpc.beta import implementations as beta_implementations
-  from grpc.beta import interfaces as beta_interfaces
 
+_DAO = _descriptor.ServiceDescriptor(
+  name='Dao',
+  full_name='Dao',
+  file=DESCRIPTOR,
+  index=0,
+  options=None,
+  serialized_start=271,
+  serialized_end=318,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='Select',
+    full_name='Dao.Select',
+    index=0,
+    containing_service=None,
+    input_type=_SELECTREQUEST,
+    output_type=_SELECTREPLY,
+    options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_DAO)
 
-  class DaoStub(object):
-    """#Database #Simple
-    Dao server handles interactions between servers and the database.
+DESCRIPTOR.services_by_name['Dao'] = _DAO
 
-    Note: Do not have clients depend on this it should be behind a
-    Backend Server behind a FrontEnd.
-    """
-
-    def __init__(self, channel):
-      """Constructor.
-
-      Args:
-        channel: A grpc.Channel.
-      """
-      self.Select = channel.unary_unary(
-          '/Dao/Select',
-          request_serializer=SelectRequest.SerializeToString,
-          response_deserializer=SelectReply.FromString,
-          )
-
-
-  class DaoServicer(object):
-    """#Database #Simple
-    Dao server handles interactions between servers and the database.
-
-    Note: Do not have clients depend on this it should be behind a
-    Backend Server behind a FrontEnd.
-    """
-
-    def Select(self, request, context):
-      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-      context.set_details('Method not implemented!')
-      raise NotImplementedError('Method not implemented!')
-
-
-  def add_DaoServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-        'Select': grpc.unary_unary_rpc_method_handler(
-            servicer.Select,
-            request_deserializer=SelectRequest.FromString,
-            response_serializer=SelectReply.SerializeToString,
-        ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-        'Dao', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-
-
-  class BetaDaoServicer(object):
-    """The Beta API is deprecated for 0.15.0 and later.
-
-    It is recommended to use the GA API (classes and functions in this
-    file not marked beta) for all further purposes. This class was generated
-    only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
-    """#Database #Simple
-    Dao server handles interactions between servers and the database.
-
-    Note: Do not have clients depend on this it should be behind a
-    Backend Server behind a FrontEnd.
-    """
-    def Select(self, request, context):
-      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-
-
-  class BetaDaoStub(object):
-    """The Beta API is deprecated for 0.15.0 and later.
-
-    It is recommended to use the GA API (classes and functions in this
-    file not marked beta) for all further purposes. This class was generated
-    only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
-    """#Database #Simple
-    Dao server handles interactions between servers and the database.
-
-    Note: Do not have clients depend on this it should be behind a
-    Backend Server behind a FrontEnd.
-    """
-    def Select(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-      raise NotImplementedError()
-    Select.future = None
-
-
-  def beta_create_Dao_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
-    """The Beta API is deprecated for 0.15.0 and later.
-
-    It is recommended to use the GA API (classes and functions in this
-    file not marked beta) for all further purposes. This function was
-    generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
-    request_deserializers = {
-      ('Dao', 'Select'): SelectRequest.FromString,
-    }
-    response_serializers = {
-      ('Dao', 'Select'): SelectReply.SerializeToString,
-    }
-    method_implementations = {
-      ('Dao', 'Select'): face_utilities.unary_unary_inline(servicer.Select),
-    }
-    server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
-    return beta_implementations.server(method_implementations, options=server_options)
-
-
-  def beta_create_Dao_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
-    """The Beta API is deprecated for 0.15.0 and later.
-
-    It is recommended to use the GA API (classes and functions in this
-    file not marked beta) for all further purposes. This function was
-    generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
-    request_serializers = {
-      ('Dao', 'Select'): SelectRequest.SerializeToString,
-    }
-    response_deserializers = {
-      ('Dao', 'Select'): SelectReply.FromString,
-    }
-    cardinalities = {
-      'Select': cardinality.Cardinality.UNARY_UNARY,
-    }
-    stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
-    return beta_implementations.dynamic_stub(channel, 'Dao', cardinalities, options=stub_options)
-except ImportError:
-  pass
 # @@protoc_insertion_point(module_scope)
