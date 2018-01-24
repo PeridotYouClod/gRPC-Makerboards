@@ -10,32 +10,41 @@ from pylibs.Sensor import ArduinoSensorReader
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 class Arduino(sensors_grpc.ArduinoServicer):
-  def __init__(self, arduino):
+  def __init__(self, arduinos):
     super().__init__()
-    self.sensorReader = ArduinoSensorReader(arduino)
+    # TODO: Add registration for different methods in config file rather than this hack
+    arduinoDevices = [ArduinoSensorReader(arduino) for arduino in arduinos]
+    self.deviceMap = {
+      "GetIrButtonPressed" : arduinoDevices[0],
+      "GetSonar" :  arduinoDevices[0],
+      "SendToRfBlaster" : arduinoDevices[1],
+    }
 
   def GetIrButtonPressed(self, request, context):
-    clean_value = self.sensorReader.GetCurrentValue()
+    device = self.deviceMap["GetIrButtonPressed"]
+    clean_value = device.GetCurrentValue()
     print('Returning Button Press: %s' % clean_value)
     return sensors_pb2.GetIrButtonPressedReply(button=clean_value)
 
   def GetSonar(self, request, context):
-    clean_value = self.sensorReader.GetCurrentValue()
+    device = self.deviceMap["GetSonar"]
+    clean_value = device.GetCurrentValue()
     print('Returning Sonar: %s' % clean_value)
     return sensors_pb2.GetSonarReply(distance=clean_value)
 
   def SendToRfBlaster(self, request, context):
     print("Sending RF Blaster Button Press: %s" % request)
-    self.sensorReader.sendRfBlast(request.button,request.on)
+    device = self.deviceMap["SendToRfBlaster"]
+    device.sendRfBlast(request.button, request.on)
     return sensors_pb2.SendToRfBlasterReply(success=True)
 
 
 def serve():
   protoConfig = ProtoConfig.getConfig()
-  arduino = protoConfig.arduinos[0]
+  arduinos = protoConfig.arduinos
 
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  sensors_grpc.add_ArduinoServicer_to_server(Arduino(arduino), server)
+  sensors_grpc.add_ArduinoServicer_to_server(Arduino(arduinos), server)
   port = protoConfig.ports.arduinoPort
   server.add_insecure_port('[::]:%s' % port)
   server.start()

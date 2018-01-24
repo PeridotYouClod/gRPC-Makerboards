@@ -58,7 +58,8 @@ class ArduinoSensorReader(object):
     return clean_value
 
   def sendRfBlast(self, button, on):
-    opcode = "%s%s" % (bin(button)[2:], bin(on)[2:])
+    opcode = "%s0%s" % (button, int(on))
+    print('Sending OpCode: %s to Port: %s' % (opcode, self.config.comPort))
     self.serial.write(opcode.encode())
 
 
