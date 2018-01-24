@@ -37,11 +37,8 @@
     sudo apt-get install python3-pip
     pip3 install --upgrade pip
 
-    # Grab gRPC for protobufs and servers
-    sudo pip3 install grpcio grpcio-tools
-
-    # Get required python libs
-    pip3 install pyserial pymongo urllib3 plotly futures websocket-client
+    # Install requirements
+    pip3 install -r requirements.txt --user
 
 ### Mac
     brew install git
@@ -55,25 +52,22 @@
     brew install python3
     pip3 install --upgrade pip
 
-    # Grab gRPC for protobufs and servers
-    pip3 install grpcio grpcio-tools
-
-    # Get required python libs
-    pip3 install pyserial pymongo urllib3 plotly futures websocket-client
+    # Install requirements
+    pip3 install -r requirements.txt --user
 
 ## Set up your ProtoConfig.py file
 Copy the ProtoConfigExample.py to ProtoConfig.py
 
     mv ProtoConfigExample.py ProtoConfig.py
 
-Fill in your ProtoConfig.py with the instructions in the file. For help see [WioLink Help](https://github.com/sorahavok/gRpc-Hardware/edit/master/README.md#WioLink Help) and [Arduino Help](https://github.com/sorahavok/gRpc-Hardware/edit/master/README.md#Arduino Help)
+Fill in your ProtoConfig.py with the instructions in the file. For help see [WioLink Help](https://github.com/sorahavok/gRpc-Hardware/edit/master/README.md#WioLink-Help) and [Arduino Help](https://github.com/sorahavok/gRpc-Hardware/edit/master/README.md#Arduino-Help)
 
 ## Build the Protobufs
 Every time a .proto file is changed run this script to create new implementations of the edited protobuf or gRPC Server.
 
 Linux:
 
-    python -m grpc.tools.protoc \
+    python3 -m grpc.tools.protoc \
       ./proto/*.proto \
       --proto_path=./proto/ \
       --python_out=./generated/proto_out \
@@ -81,7 +75,7 @@ Linux:
 
 Mac:
 
-    python -m grpc.tools.protoc ./proto/*.proto --proto_path=./proto/  --python_out=./generated/proto_out  --grpc_python_out=./generated/proto_out
+    python3 -m grpc.tools.protoc ./proto/*.proto --proto_path=./proto/  --python_out=./generated/proto_out  --grpc_python_out=./generated/proto_out
 
 ## How Do I Run Everything?
 The basic procedure is launch all the servers then run a Client
@@ -89,22 +83,22 @@ The basic procedure is launch all the servers then run a Client
 ### Production
 If you have a working version and don't need debug messages use this
 
-    python WioServer.py &
-    python ArduinoServer.py &
-    python DaoServer.py &
-    python FrontEndServer.py &
-    python PushServer.py &
-    python Client.py
+    python3 WioServer.py &
+    python3 ArduinoServer.py &
+    python3 DaoServer.py &
+    python3 FrontEndServer.py &
+    python3 PushServer.py &
+    python3 Client.py
 
 ### Debug
 While developing it is useful to have all the different servers in different terminals
 
-    python WioServer.py
-    python ArduinoServer.py
-    python DaoServer.py
-    python FrontEndServer.py
-    python PushServer.py
-    python Client.py
+    python3 WioServer.py
+    python3 ArduinoServer.py
+    python3 DaoServer.py
+    python3 FrontEndServer.py
+    python3 PushServer.py
+    python3 Client.py
 
 ### How do I kill PushServer.py?
 PushServer is a bit odd right now, it is a gRPC server and a websocket in the same server and both need to be killed so [Ctrl][c] twice to kill it.
