@@ -42,6 +42,7 @@ class ArduinoSensorReader(object):
     self.config = arduinoConfig
     self.serial = serial.Serial(
       arduinoConfig.comPort, arduinoConfig.baudRate)
+    self.functions = arduinoConfig.functions
 
   def getName(self):
     return 'Arduino on %s' % arduinoConfig.comPort
