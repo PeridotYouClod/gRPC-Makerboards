@@ -21,7 +21,7 @@ def run():
 
   def gotMessage(message):
       print('message.data: %s' % message.data)
-      messageJson = json.loads(message.data)
+      messageJson = json.loads(message.data.decode('utf-8'))
       request = sensors_pb2.SendToRfBlasterRequest(
         button=int(messageJson['button-destination']),
         on=(messageJson['button-state'] == 'on')
@@ -31,12 +31,18 @@ def run():
 
   messageFuture = subscription.open(gotMessage)
 
+  errorCount = 0
   while True:
     print('Waiting for new message...')
     try:
         messageFuture.result()
+        errorCount = 0
     except Exception as ex:
         print('Error handling message: %s' % ex)
+        errorCount += 1
+        if(errorCount>5):
+          print('Too many errors in a row, shutting down')
+          raise
 
 
 if __name__ == '__main__':
