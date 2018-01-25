@@ -40,6 +40,20 @@
     # Install requirements
     pip3 install -r requirements.txt --user
 
+#### Raspberry Pi Potential Issues
+    # Make sure the clock is correct if it is wrong run
+    sudo raspi-config
+    # Select Internationalisation Options
+    # Select I2 Change Timezone
+    # Select Finish
+
+    # Getting CERTIFICATE_VERIFY_FAILED?
+    sudo apt-get update
+    sudo apt-get install libssl-dev
+    sudo pip3 install libffi-dev # OR next line
+    sudo apt-get install libffi-dev
+    pip3 install cryptography
+
 ### Mac
     brew install git
 
